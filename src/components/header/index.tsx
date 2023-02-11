@@ -28,7 +28,7 @@ export const Header = () => {
             fill
           />
         </div>
-        <span className="absolute -bottom-2 right-0 bg-green-500 text-sm text-white font-bold w-6 h-6  justify-center items-center rounded-full flex ">
+        <span className="absolute -bottom-2 right-0 bg-green-500 text-sm text-white font-bold w-6 h-6 justify-center items-center rounded-full flex ">
           3
         </span>
       </div>
