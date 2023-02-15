@@ -10,10 +10,13 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         begeClaro: "#F2ECE8",
         begeMedio: "#C6ADA0",
         begeEscuro: "#685B5B"
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
       },
     },
   },

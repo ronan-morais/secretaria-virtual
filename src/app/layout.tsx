@@ -1,5 +1,10 @@
+import { Inter } from "@next/font/google";
 import { Header } from "@/components/header";
 import "./globals.css";
+
+const inter = Inter({
+  variable: "--font-inter",
+});
 
 export default function RootLayout({
   children,
@@ -7,13 +12,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${inter.variable}`}>
       <head />
-      <body className="bg-begeClaro flex flex-col lg:flex-row">
-        <div>
+      <body className="bg-begeClaro flex flex-col">
+        <div className="w-full">
           <Header />
         </div>
-        <div>{children}</div>
+        <div className="w-full">{children}</div>
       </body>
     </html>
   );
