@@ -1,79 +1,47 @@
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import "swiper/swiper.min.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useScreenSize } from "@/utils/hooks";
 
 export function Slider() {
-  const carousel = useRef();
-  const [width, setWidth] = useState(0);
-
-  useEffect(() => {
-    setWidth(carousel.current?.scrollWidth - carousel.current?.offsetWidth);
-  }, []);
+  const screenSize = useScreenSize();
 
   return (
-    <motion.div
-      ref={carousel}
-      className="border bg-red-400 px-5 cursor-grab overflow-hidden flex"
-      whileTap={{ cursor: "grabbing" }}
+    <Swiper
+      grabCursor={true}
+      spaceBetween={0}
+      slidesPerView={screenSize.size < 1024 ? 1 : 3}
+      autoplay={{ delay: 3000 }}
+      loop={false}
+      className="h-[25vh]"
     >
-      <motion.div
-        className="flex gap-5 bg-green-400"
-        drag="x"
-        dragConstraints={{ right: 0, left: -width }}
+      <SwiperSlide className="bg-[url(https://images.unsplash.com/photo-1611820135074-e2d0e3e92322?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1135&q=80)] bg-cover w-full h-full bg-right md:bg-center lg:bg-right">
+        &nbsp;1
+      </SwiperSlide>
+      <SwiperSlide
+        className="bg-[url(/images/about/2-min.jpg)] bg-cover w-full h-full bg-right"
+        style={{ filter: "grayscale(100%)" }}
       >
-        <motion.div className="flex flex-col h-[25vh] min-w-[100%] rounded-lg pointer-events-none">
-          <div className="relative rounded-lg w-full h-full overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1516477266610-9e4c763da721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h4>teste</h4>
-          </div>
-        </motion.div>
-        <motion.div className="flex flex-col h-[25vh] min-w-[100%] rounded-lg pointer-events-none">
-          <div className="relative rounded-lg w-full h-full overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1516477266610-9e4c763da721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h4>teste</h4>
-          </div>
-        </motion.div>
-        <motion.div className="flex flex-col h-[25vh] min-w-[100%] rounded-lg pointer-events-none">
-          <div className="relative rounded-lg w-full h-full overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1516477266610-9e4c763da721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h4>teste</h4>
-          </div>
-        </motion.div>
-        <motion.div className="flex flex-col h-[25vh] min-w-[100%] rounded-lg pointer-events-none">
-          <div className="relative rounded-lg w-full h-full overflow-hidden">
-            <Image
-              src="https://images.unsplash.com/photo-1516477266610-9e4c763da721?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-              alt=""
-              fill
-              className="object-cover"
-            />
-          </div>
-          <div>
-            <h4>teste</h4>
-          </div>
-        </motion.div>
-      </motion.div>
-    </motion.div>
+        &nbsp;2
+      </SwiperSlide>
+      <SwiperSlide
+        className="bg-[url(/images/about/3-min.jpg)] bg-cover w-full h-full bg-left"
+        style={{ filter: "grayscale(100%)" }}
+      >
+        &nbsp;3
+      </SwiperSlide>
+      <SwiperSlide
+        className="bg-[url(/images/about/4-min.jpg)] bg-cover w-full h-full bg-left"
+        style={{ filter: "grayscale(100%)" }}
+      >
+        &nbsp;4
+      </SwiperSlide>
+      <SwiperSlide
+        className="bg-[url(/images/about/5-min.jpg)] bg-cover w-full h-full bg-center"
+        style={{ filter: "grayscale(100%)" }}
+      >
+        &nbsp;5
+      </SwiperSlide>
+    </Swiper>
   );
 }
