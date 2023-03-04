@@ -9,6 +9,18 @@
 
 /* For IE, Edge and Firefox */
 .scrollbar-hide {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+.featured-slider {
+  @apply h-[35vh] px-7 pb-5;
+}
+
+.featured-card {
+  @apply rounded-2xl bg-cover h-full bg-right md:bg-center lg:bg-right overflow-clip shadow-sm;
+}
+
+.featured-card-footer {
+  @apply absolute bottom-0 bg-white w-full p-5;
 }

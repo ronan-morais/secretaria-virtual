@@ -2,7 +2,7 @@ import { Featuring } from "@/components/home/featuring";
 
 export default function Home() {
   return (
-    <main className="container w-full">
+    <main className="w-full">
       <Featuring />
       <section>comunicados</section>
       <section>calendario</section>
