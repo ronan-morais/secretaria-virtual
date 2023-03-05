@@ -1,9 +1,7 @@
-"use client";
-
 import { useEffect, useState } from "react";
 
 export const useScreenSize = () => {
-  const [windowSize, setWindowSize] = useState(0);
+  const [windowSize, setWindowSize] = useState(1024);
 
   const responsive = (size: number) => {
     if (size > 0 && size < 640) return "sm";
@@ -14,6 +12,8 @@ export const useScreenSize = () => {
   };
 
   useEffect(() => {
+    setWindowSize(window.innerWidth);
+
     const handleWindowResize = () => {
       setWindowSize(window.innerWidth);
     };
