@@ -10,7 +10,7 @@ export function Slider() {
     <Swiper
       grabCursor={true}
       spaceBetween={10}
-      slidesPerView={screenSize.size < 1024 ? 1 : 3}
+      slidesPerView={screenSize.size <= 1024 ? 1 : 3}
       autoplay={{ delay: 3000 }}
       loop={false}
       className="featured-slider"

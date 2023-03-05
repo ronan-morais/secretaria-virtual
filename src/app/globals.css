@@ -14,7 +14,7 @@
 }
 
 .featured-slider {
-  @apply h-[35vh] px-7 pb-5;
+  @apply h-[50vh] px-7 pb-5 border-red-600;
 }
 
 .featured-card {
