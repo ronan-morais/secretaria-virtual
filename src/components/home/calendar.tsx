@@ -4,7 +4,7 @@ import "swiper/swiper.min.css";
 
 export function Calendar() {
   return (
-    <section className="w-full pt-5">
+    <section className="w-full pt-5 md:whitespace-nowrap md:pr-14">
       <h2 className="flex flex-row text-lg font-sans font-light text-begeMedio p-5">
         <MdOutlineCalendarMonth className="w-10 h-6 fill-begeMedio" />
         Calendário

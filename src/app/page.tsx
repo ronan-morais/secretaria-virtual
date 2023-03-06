@@ -7,8 +7,12 @@ export default function Home() {
     <main className="w-full">
       <Featuring />
       <div className="flex flex-col md:flex-row">
-        <MessageBoard />
-        <Calendar />
+        <div className="w-full">
+          <MessageBoard />
+        </div>
+        <div className="">
+          <Calendar />
+        </div>
       </div>
       <section>aniversários</section>
     </main>
