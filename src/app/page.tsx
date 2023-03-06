@@ -1,3 +1,4 @@
+import { Calendar } from "@/components/home/calendar";
 import { Featuring } from "@/components/home/featuring";
 import { MessageBoard } from "@/components/home/messageBoard";
 
@@ -6,7 +7,7 @@ export default function Home() {
     <main className="w-full">
       <Featuring />
       <MessageBoard />
-      <section>calendario</section>
+      <Calendar />
       <section>aniversários</section>
     </main>
   );
