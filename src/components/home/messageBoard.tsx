@@ -7,7 +7,7 @@ export function MessageBoard() {
     <section className="w-full pt-5">
       <h2 className="flex flex-row text-lg lg:text-2xl font-sans font-light text-begeMedio">
         <HiOutlineChatAlt className="w-10 h-6 lg:w-14 lg:h-8" />
-        Comunicados importantes
+        Comunicados
       </h2>
       <div className="bg-white px-7 py-6 lg:p-10 rounded-xl mt-10 text-begeEscuro shadow-sm">
         <span className="text-sm md:text-base">
