@@ -11,11 +11,14 @@ export default function Home() {
         <div className="w-full">
           <MessageBoard />
         </div>
-        <div className="">
-          <Calendar />
-        </div>
-        <div className="">
-          <Birthdates />
+
+        <div className="flex flex-col sm:flex-row gap-10 p-8 lg:px-32 lg:py-20">
+          <div className="">
+            <Calendar />
+          </div>
+          <div className="">
+            <Birthdates />
+          </div>
         </div>
       </div>
     </main>
