@@ -22,5 +22,5 @@
 }
 
 .featured-card-footer {
-  @apply absolute bottom-0 bg-white w-full p-5;
+  @apply absolute bottom-0 bg-white w-full p-5 lg:p-10 group-hover:pt-14 group-hover:pb-12 transition-all;
 }
