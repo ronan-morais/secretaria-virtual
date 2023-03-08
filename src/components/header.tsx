@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { Drawer } from "./drawer";
 import { HiMenuAlt2 } from "react-icons/hi";
 
 export function Header() {
@@ -26,14 +29,24 @@ export function Header() {
       </div>
       <div className="">
         <nav>
+          <input type="checkbox" id="closeDrawer" className="peer hidden" />
           <button
             type="button"
             id="menuButton"
             title="Menu Button"
-            className="p-3 bg-begeClaro rounded-lg hover:ring-2 hover:ring-begeClaro hover:ring-offset-2 transition-all"
+            className="bg-begeClaro rounded-lg hover:ring-2 hover:ring-begeClaro hover:ring-offset-2 transition-all"
           >
-            <HiMenuAlt2 className="fill-begeMedio w-6 h-6" />
+            <label htmlFor="closeDrawer" className="p-3 flex cursor-pointer">
+              <HiMenuAlt2 className="fill-begeMedio w-6 h-6" />
+            </label>
           </button>
+          <Drawer>
+            <div className="p-10">
+              <ul>
+                <li>Link 1</li>
+              </ul>
+            </div>
+          </Drawer>
         </nav>
       </div>
     </div>
