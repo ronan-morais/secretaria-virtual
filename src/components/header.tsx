@@ -29,7 +29,6 @@ export function Header() {
       </div>
       <div className="">
         <nav>
-          <input type="checkbox" id="closeDrawer" className="peer hidden" />
           <button
             type="button"
             id="menuButton"
