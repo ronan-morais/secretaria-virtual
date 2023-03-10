@@ -34,7 +34,7 @@ export function Drawer({ children }: props) {
           type="button"
           id="menuButton"
           title="Menu Button"
-          className="fixed top-5 right-5"
+          className="fixed top-8 right-8"
         >
           <label htmlFor="closeDrawer" className="p-1 flex cursor-pointer">
             <RiCloseCircleLine className="fill-begeClaro hover:fill-white w-8 h-8" />

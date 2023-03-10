@@ -8,8 +8,87 @@ datasource db {
   relationMode = "prisma"
 }
 
-model Usuario {
-  id    String @id @unique
-  nome  String
-  email String
+model Usuarios {
+  usuarioId   Int      @id @unique @default(autoincrement())
+  perfilId    Int?     @unique
+  amigoId     Int?     @unique
+  dataCriacao DateTime @default(now())
+  dataUpdate  DateTime @updatedAt
+  usuario     String
+  email       String?  @unique
+  senha       String
+  avatar      String?
+
+  amigo  Amigos? @relation(fields: [amigoId], references: [amigoId])
+  perfil Perfis? @relation(fields: [perfilId], references: [perfilId])
+}
+
+model Amigos {
+  amigoId        Int      @id @unique @default(autoincrement())
+  dadosUsuarioId Int?     @unique
+  anamneseId     Int?     @unique
+  dataCriacao    DateTime @default(now())
+  dataUpdate     DateTime @updatedAt
+
+  usuario      Usuarios?
+  dadosUsuario DadosUsuarios? @relation(fields: [dadosUsuarioId], references: [dadosUsuarioId])
+  anamnese     Anamneses?     @relation(fields: [anamneseId], references: [anamneseId])
+}
+
+model DadosUsuarios {
+  dadosUsuarioId    Int       @id @unique @default(autoincrement())
+  dataCriacao       DateTime  @default(now())
+  dataUpdate        DateTime  @updatedAt
+  genero            String?
+  nome              String
+  sobrenome         String?
+  apelido           String?
+  cpf               String?   @unique
+  telefone          String?
+  whatsapp          String?
+  dataNascimento    DateTime?
+  logradouro        String?
+  bairro            String?
+  cidade            String?
+  uf                String?
+  nacionalidade     String?
+  contatoEmergencia String?
+  estadoCivil       String?
+  escolaridade      String?
+  observacao        String?
+
+  amigo Amigos?
+}
+
+model Anamneses {
+  anamneseId          Int      @id @unique @default(autoincrement())
+  dataCriacao         DateTime @default(now())
+  dataUpdate          DateTime @updatedAt
+  dataAnamnese        DateTime
+  queixaClinica       String?
+  medicacao           String?
+  internacao          String?
+  doencaDiagnosticada String?
+  humor               String?
+  situacaoMental      String?
+  compulsao           String?
+  tratamentoPsi       String?
+  centroReligioso     String?
+  familiaReligiao     String?
+  aprovacaoFamiliar   String?
+  comoSoube           String?
+  conhecido           String?
+  pdc                 String?
+  primeiroTrabalho    String?
+  anexo               String?
+  observacao          String?
+
+  amigo Amigos?
+}
+
+model Perfis {
+  perfilId Int    @id @unique @default(autoincrement())
+  perfil   String
+
+  usuario Usuarios?
 }
