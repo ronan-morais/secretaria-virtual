@@ -14,9 +14,10 @@ import {
   parseISO,
   startOfToday,
 } from "date-fns";
-import { is, ptBR } from "date-fns/locale";
+import { ptBR } from "date-fns/locale";
 import { useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { Lista } from "./lista";
 
 const eventos = [
   {
@@ -36,7 +37,7 @@ const eventos = [
     horaFim: "22:00",
   },
   {
-    id: 1,
+    id: 3,
     nome: "Concentração",
     dataInicio: "2023-03-30",
     horaInicio: "20:30",
@@ -54,6 +55,7 @@ export function CalendarioLista() {
   const [diaSelecionado, setDiaSelecionado] = useState(hoje);
   const [mesAtual, setMesAtual] = useState(format(hoje, "MMM-yyyy"));
   const primeiroDiaMesAtual = parse(mesAtual, "MMM-yyyy", new Date());
+  const [index, setIndex] = useState(0);
 
   const dias = eachDayOfInterval({
     start: primeiroDiaMesAtual,
@@ -64,8 +66,6 @@ export function CalendarioLista() {
     isSameDay(parseISO(evento.dataInicio), diaSelecionado)
   );
 
-  console.log("eventosDia", diasEventos);
-
   function mesAnterior() {
     const primeiroDiaMesAnterior = add(primeiroDiaMesAtual, { months: -1 });
     setMesAtual(format(primeiroDiaMesAnterior, "MMM-yyyy"));
@@ -73,7 +73,7 @@ export function CalendarioLista() {
 
   function mesHoje() {
     setMesAtual(format(new Date(), "MMM-yyyy"));
-    setDiaSelecionado(hoje)
+    setDiaSelecionado(hoje);
   }
 
   function proximoMes() {
@@ -87,20 +87,30 @@ export function CalendarioLista() {
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gra">
           <div className="md:pr-14">
             <div className="flex items-center">
-              <h2 className="flex-auto font-semibold text-gray-900">
+              <h2 className="flex-auto font-semibold text-begeEscuro capitalize">
                 {format(primeiroDiaMesAtual, "MMMM yyyy", { locale: ptBR })}
               </h2>
               <button type="button" onClick={mesAnterior} className="">
                 <span className="sr-only">Mês anterior</span>
-                <HiChevronLeft className="w-5 h-5" aria-hidden="true" />
+                <HiChevronLeft
+                  className="w-5 h-5 fill-begeMedio"
+                  aria-hidden="true"
+                />
               </button>
-              <button type="button" onClick={mesHoje} className="mx-7">
+              <button
+                type="button"
+                onClick={mesHoje}
+                className="mx-7 text-sm text-begeEscuro font-bold"
+              >
                 <span className="sr-only">Mês atual</span>
                 Hoje
               </button>
               <button type="button" onClick={proximoMes} className="">
                 <span className="sr-only">Próximo mês</span>
-                <HiChevronRight className="w-5 h-5" aria-hidden="true" />
+                <HiChevronRight
+                  className="w-5 h-5 fill-begeMedio"
+                  aria-hidden="true"
+                />
               </button>
             </div>
             <div className="grid grid-cols-7 mt-10 text-xs leading-6 text-center text-gray-500">
@@ -126,6 +136,12 @@ export function CalendarioLista() {
                       type="button"
                       onClick={() => {
                         setDiaSelecionado(dia);
+                        setIndex(0);
+                        eventos.some(evento => {
+                          if (isSameDay(dia, parseISO(evento.dataInicio))) {
+                            setIndex(evento.id);
+                          }
+                        });
                       }}
                       className={classNames(
                         isEqual(dia, diaSelecionado) && "text-white",
@@ -173,12 +189,19 @@ export function CalendarioLista() {
             </div>
           </div>
           <section className="mt-12 md:mt-0 md:pl-14">
+            <ListaEventos
+              eventos={eventos}
+              index={index}
+              setIndex={setIndex}
+              mesAtual={mesAtual}
+              setDiaSelecionado={setDiaSelecionado}
+            />
             {/* <h2 className="font-semibold text-gray-900">
               Evento em{" "}
               <time dateTime={format(diaSelecionado, "yyyy-MM-dd")}>
                 {format(diaSelecionado, "MMM dd, yyy")}
               </time>
-            </h2> */}
+            </h2>
             <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
               {diasEventos.length > 0 ? (
                 diasEventos.map((evento, key) => (
@@ -187,7 +210,7 @@ export function CalendarioLista() {
               ) : (
                 <p>nenhum evento</p>
               )}
-            </ol>
+            </ol> */}
           </section>
         </div>
       </div>
@@ -195,7 +218,58 @@ export function CalendarioLista() {
   );
 }
 
-function CardEvento({ evento }: any) {
+function ListaEventos({
+  eventos,
+  index,
+  setIndex,
+  setDiaSelecionado,
+  mesAtual,
+}: any) {
+  return (
+    <div className="flex flex-col">
+      {eventos.map((evento: any, key: number) => {
+        if (format(parseISO(evento.dataInicio), "MMM-yyyy") == mesAtual) {
+          return (
+            <>
+              <Lista
+                key={key}
+                id={evento.id}
+                nome={evento.nome}
+                dataInicio={evento.dataInicio}
+                dataFim={evento.dataFim}
+                horaInicio={evento.horaInicio}
+                horaFim={evento.horaFim}
+                index={index}
+                setIndex={setIndex}
+                setDiaSelecionado={setDiaSelecionado}
+              />
+            </>
+          );
+        }
+      })}
+      {/* {eventos.map((evento: any, key: number) => {
+        return (
+          <>
+            <Lista
+              key={key}
+              id={evento.id}
+              nome={evento.nome}
+              dataInicio={evento.dataInicio}
+              dataFim={evento.dataFim}
+              horaInicio={evento.horaInicio}
+              horaFim={evento.horaFim}
+              index={index}
+              setIndex={setIndex}
+              setDiaSelecionado={setDiaSelecionado}
+            />
+          </>
+        );
+      })} */}
+    </div>
+  );
+}
+
+/* function CardEvento({ evento }: any) {
   let dataInicio = parseISO(evento.dataInicio);
   let dataFim = parseISO(evento.dataFim);
 
@@ -212,7 +286,7 @@ function CardEvento({ evento }: any) {
       </div>
     </li>
   );
-}
+} */
 
 let colStartClasses: string[] = [
   "",
