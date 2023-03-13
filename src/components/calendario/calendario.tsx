@@ -96,7 +96,7 @@ export function CalendarioLista() {
   }
 
   return (
-    <div className="pt-16 px-5" onDragCapture={console.log("teste")}>
+    <div className="pt-16 px-5">
       <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-4xl md:px-6">
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gra">
           <div className="md:pr-14">
