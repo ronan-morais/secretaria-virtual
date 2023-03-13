@@ -27,6 +27,12 @@ const eventos = [
     horaInicio: "20:30",
     dataFim: "2023-03-15",
     horaFim: "00:00",
+    farda: "branca",
+    lista: [{
+      idUsuario: 1,
+      funcao: 1
+    }],
+    observação: ""
   },
   {
     id: 2,
@@ -40,6 +46,14 @@ const eventos = [
     id: 3,
     nome: "Concentração",
     dataInicio: "2023-03-30",
+    horaInicio: "20:30",
+    dataFim: "2023-03-30",
+    horaFim: "00:00",
+  },
+  {
+    id: 4,
+    nome: "Concentração",
+    dataInicio: "2023-04-15",
     horaInicio: "20:30",
     dataFim: "2023-03-30",
     horaFim: "00:00",
@@ -82,7 +96,7 @@ export function CalendarioLista() {
   }
 
   return (
-    <div className="pt-16">
+    <div className="pt-16 px-5" onDragCapture={console.log("teste")}>
       <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-4xl md:px-6">
         <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gra">
           <div className="md:pr-14">
@@ -122,7 +136,7 @@ export function CalendarioLista() {
               <div>S</div>
               <div>D</div>
             </div>
-            <div className="grid grid-cols-7 mt-2 text-sm">
+            <div className="grid grid-cols-7 mt-2 text-xs sm:text-sm">
               {dias.map((dia, indexDia) => {
                 return (
                   <div
@@ -168,21 +182,13 @@ export function CalendarioLista() {
                         eventos.some(evento =>
                           isSameDay(parseISO(evento.dataInicio), dia)
                         ) && "ring ring-begeMedio",
-                        "mx-auto flex h-8 w-8 items-center justify-center rounded-full"
+                        "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-bgMedio"
                       )}
                     >
                       <time dateTime={format(dia, "yyyy-MM-dd")}>
                         {format(dia, "d")}
                       </time>
                     </button>
-
-                    {/* <div className="w-1 h-1 mx-auto mt-1">
-                      {eventos.some(evento =>
-                        isSameDay(parseISO(evento.dataInicio), dia)
-                      ) && (
-                        <div className="w-1 h-1 rounded-full bg-sky-500"></div>
-                      )}
-                    </div> */}
                   </div>
                 );
               })}
@@ -194,23 +200,9 @@ export function CalendarioLista() {
               index={index}
               setIndex={setIndex}
               mesAtual={mesAtual}
+              diaSelecionado={diaSelecionado}
               setDiaSelecionado={setDiaSelecionado}
             />
-            {/* <h2 className="font-semibold text-gray-900">
-              Evento em{" "}
-              <time dateTime={format(diaSelecionado, "yyyy-MM-dd")}>
-                {format(diaSelecionado, "MMM dd, yyy")}
-              </time>
-            </h2>
-            <ol className="mt-4 space-y-1 text-sm leading-6 text-gray-500">
-              {diasEventos.length > 0 ? (
-                diasEventos.map((evento, key) => (
-                  <CardEvento evento={evento} key={key} />
-                ))
-              ) : (
-                <p>nenhum evento</p>
-              )}
-            </ol> */}
           </section>
         </div>
       </div>
@@ -222,71 +214,48 @@ function ListaEventos({
   eventos,
   index,
   setIndex,
+  diaSelecionado,
   setDiaSelecionado,
   mesAtual,
 }: any) {
-  return (
-    <div className="flex flex-col">
-      {eventos.map((evento: any, key: number) => {
-        if (format(parseISO(evento.dataInicio), "MMM-yyyy") == mesAtual) {
-          return (
-            <>
-              <Lista
-                key={key}
-                id={evento.id}
-                nome={evento.nome}
-                dataInicio={evento.dataInicio}
-                dataFim={evento.dataFim}
-                horaInicio={evento.horaInicio}
-                horaFim={evento.horaFim}
-                index={index}
-                setIndex={setIndex}
-                setDiaSelecionado={setDiaSelecionado}
-              />
-            </>
-          );
-        }
-      })}
-      {/* {eventos.map((evento: any, key: number) => {
-        return (
-          <>
-            <Lista
-              key={key}
-              id={evento.id}
-              nome={evento.nome}
-              dataInicio={evento.dataInicio}
-              dataFim={evento.dataFim}
-              horaInicio={evento.horaInicio}
-              horaFim={evento.horaFim}
-              index={index}
-              setIndex={setIndex}
-              setDiaSelecionado={setDiaSelecionado}
-            />
-          </>
-        );
-      })} */}
-    </div>
+  const filterMes = format(diaSelecionado, "MMMM", {locale: ptBR});
+  const filterEventos = eventos.filter(
+    (evento: any) =>
+      format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
   );
-}
-
-/* function CardEvento({ evento }: any) {
-  let dataInicio = parseISO(evento.dataInicio);
-  let dataFim = parseISO(evento.dataFim);
-
-  return (
-    <li className="flex items-center px-4 py-2 space-x-4 group rounded-xl focus-within:bg-gray-100">
-      <div className="flex-auto">
-        <p className="text-gray-900">{evento.nome}</p>
-        <p className="mt-0.5">
-          <time dateTime={evento.dataInicio}>
-            {format(dataInicio, "h:mm a")}
-          </time>{" "}
-          - <time dateTime={evento.dataFim}>{format(dataFim, "h:mm a")}</time>
-        </p>
+  if (filterEventos.length > 0) {
+    return (
+      <div className="flex flex-col">
+        {eventos.map((evento: any, key: number) => {
+          if (format(parseISO(evento.dataInicio), "MMM-yyyy") == mesAtual) {
+            return (
+              <>
+                <Lista
+                  key={key}
+                  id={evento.id}
+                  nome={evento.nome}
+                  dataInicio={evento.dataInicio}
+                  dataFim={evento.dataFim}
+                  horaInicio={evento.horaInicio}
+                  horaFim={evento.horaFim}
+                  index={index}
+                  setIndex={setIndex}
+                  setDiaSelecionado={setDiaSelecionado}
+                />
+              </>
+            );
+          }
+        })}
       </div>
-    </li>
-  );
-} */
+    );
+  } else {
+    return (
+      <div className="font-bold text-sm text-begeMedio p-5">
+        Nenhum trabalho.
+      </div>
+    );
+  }
+}
 
 let colStartClasses: string[] = [
   "",
