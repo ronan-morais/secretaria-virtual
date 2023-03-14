@@ -107,15 +107,7 @@ export function Lista({
               type="button"
               className="bg-begeEscuro font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
             >
-              <HiOutlineCheckCircle className="w-6 h-6" />
-              Quero participar
-            </button>
-            <button
-              type="button"
-              className="bg-white font-bold text-begeEscuro p-3 py-2 rounded-lg w-auto flex flex-row items-center gap-1 border-2 border-begeMedio"
-            >
-              <HiOutlineInformationCircle className="w-6 h-6" />
-              <span className="sr-only">Mais informações</span>
+              <HiOutlineInformationCircle className="w-6 h-6" /> Mais informações
             </button>
           </div>
         </div>
