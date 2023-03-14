@@ -98,14 +98,14 @@ export function CalendarioLista() {
 
   return (
     <div className="pt-16 px-5">
-      <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-4xl md:px-6">
-        <div className="md:grid md:grid-cols-2 md:divide-x md:divide-gra">
-          <div className="md:pr-14">
+      <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-6xl md:px-6">
+        <div className="flex flex-col md:flex-row md:divide-x md:divide-gray-300">
+          <div className="md:pr-14 w-full md:w-[40%] lg:w-1/3">
             <div className="flex items-center">
-              <h2 className="flex-auto font-semibold text-begeEscuro capitalize">
+              <h2 className="flex-auto text-sm sm:text-base font-bold text-begeEscuro capitalize">
                 {format(primeiroDiaMesAtual, "MMMM yyyy", { locale: ptBR })}
               </h2>
-              <button type="button" onClick={mesAnterior} className="">
+              <button type="button" onClick={mesAnterior} className="p-3">
                 <span className="sr-only">Mês anterior</span>
                 <HiChevronLeft
                   className="w-5 h-5 fill-begeMedio"
@@ -115,12 +115,12 @@ export function CalendarioLista() {
               <button
                 type="button"
                 onClick={mesHoje}
-                className="mx-7 text-sm text-begeEscuro font-bold"
+                className="py-3 text-sm text-begeEscuro font-bold"
               >
                 <span className="sr-only">Mês atual</span>
                 Hoje
               </button>
-              <button type="button" onClick={proximoMes} className="">
+              <button type="button" onClick={proximoMes} className="p-3">
                 <span className="sr-only">Próximo mês</span>
                 <HiChevronRight
                   className="w-5 h-5 fill-begeMedio"
@@ -195,7 +195,9 @@ export function CalendarioLista() {
               })}
             </div>
           </div>
-          <section className="mt-12 md:mt-0 md:pl-14">
+          <div
+            className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14"
+          >
             <ListaEventos
               eventos={eventos}
               index={index}
@@ -204,7 +206,7 @@ export function CalendarioLista() {
               diaSelecionado={diaSelecionado}
               setDiaSelecionado={setDiaSelecionado}
             />
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -219,14 +221,14 @@ function ListaEventos({
   setDiaSelecionado,
   mesAtual,
 }: any) {
-  const filterMes = format(diaSelecionado, "MMMM", { locale: ptBR });
+  //const filterMes = format(diaSelecionado, "MMMM", { locale: ptBR });
   const filterEventos = eventos.filter(
     (evento: any) =>
       format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
   );
   if (filterEventos.length > 0) {
     return (
-      <div className="flex flex-col">
+      <div className="flex flex-col w-full">
         {eventos.map((evento: any, key: number) => {
           if (format(parseISO(evento.dataInicio), "MMM-yyyy") == mesAtual) {
             return (
