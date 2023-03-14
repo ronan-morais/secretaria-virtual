@@ -89,6 +89,7 @@ export function CalendarioLista() {
   function mesHoje() {
     setMesAtual(format(new Date(), "MMM-yyyy"));
     setDiaSelecionado(hoje);
+    setIndex(0);
   }
 
   function proximoMes() {
@@ -195,9 +196,7 @@ export function CalendarioLista() {
               })}
             </div>
           </div>
-          <div
-            className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14"
-          >
+          <div className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14">
             <ListaEventos
               eventos={eventos}
               index={index}
