@@ -240,6 +240,7 @@ function ListaEventos({
                   horaInicio={evento.horaInicio}
                   horaFim={evento.horaFim}
                   farda={evento.farda}
+                  hinario={evento.hinario}
                   trabalhoId={evento.trabalho}
                   lista={evento.lista}
                   observacao={evento.observacao}
