@@ -49,9 +49,9 @@ const eventos = [
   {
     id: 3,
     nome: "Concentração",
-    dataInicio: "2023-03-13",
+    dataInicio: "2023-03-30",
     horaInicio: "20:30",
-    dataFim: "2023-03-13",
+    dataFim: "2023-03-30",
     horaFim: "00:00",
     farda: "azul",
     hinario: "Oração + Concentração + Hinos novos",
