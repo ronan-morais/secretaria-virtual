@@ -66,15 +66,15 @@ export function Lista({
         }}
         className="font-bold text-begeEscuro text-md lg:text-xl tracking-tight cursor-pointer"
       >
-        <div className="p-5 text-base md:text-lg text-begeEscuro">
+        <div className="p-5 text-base md:text-lg text-begeEscuro flex flex-row items-center">
           {nome}
           <span
             className={classNames(
               index === id && "invisible",
-              "font-normal text-sm  ml-2"
+              "font-normal text-sm ml-2 flex flex-row items-center gap-1"
             )}
           >
-            ({format(parseISO(dataInicio), "dd/MM")})
+            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> {format(parseISO(dataInicio), "dd/MM")}
           </span>
         </div>
       </div>
