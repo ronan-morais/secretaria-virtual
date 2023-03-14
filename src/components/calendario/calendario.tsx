@@ -27,36 +27,37 @@ const eventos = [
     horaInicio: "20:30",
     dataFim: "2023-03-15",
     horaFim: "00:00",
-    farda: "branca",
-    lista: [{
-      idUsuario: 1,
-      funcao: 1
-    }],
-    observação: ""
+    trabalho: 1,
+    farda: "azul",
+    hinario: "Oração + Concentração + Hinos novos",
+    lista: [{ idUsuario: 1, funcao: 1 }],
+    observação: "",
   },
   {
     id: 2,
     nome: "São José",
     dataInicio: "2023-03-19",
-    horaInicio: "10:00",
+    horaInicio: "10:30",
     dataFim: "2023-03-19",
     horaFim: "22:00",
+    farda: "branca",
+    hinario: "O Cruzeirinho, Padrinho Alfredo",
+    trabalho: 1,
+    lista: [{ idUsuario: 1, funcao: 1 }],
+    observação: "",
   },
   {
     id: 3,
     nome: "Concentração",
-    dataInicio: "2023-03-30",
+    dataInicio: "2023-03-13",
     horaInicio: "20:30",
-    dataFim: "2023-03-30",
+    dataFim: "2023-03-13",
     horaFim: "00:00",
-  },
-  {
-    id: 4,
-    nome: "Concentração",
-    dataInicio: "2023-04-15",
-    horaInicio: "20:30",
-    dataFim: "2023-03-30",
-    horaFim: "00:00",
+    farda: "azul",
+    hinario: "Oração + Concentração + Hinos novos",
+    trabalho: 1,
+    lista: [{ idUsuario: 1, funcao: 1 }],
+    observação: "",
   },
 ];
 
@@ -182,7 +183,7 @@ export function CalendarioLista() {
                         eventos.some(evento =>
                           isSameDay(parseISO(evento.dataInicio), dia)
                         ) && "ring ring-begeMedio",
-                        "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-bgMedio"
+                        "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-bgMedio transition-all"
                       )}
                     >
                       <time dateTime={format(dia, "yyyy-MM-dd")}>
@@ -218,7 +219,7 @@ function ListaEventos({
   setDiaSelecionado,
   mesAtual,
 }: any) {
-  const filterMes = format(diaSelecionado, "MMMM", {locale: ptBR});
+  const filterMes = format(diaSelecionado, "MMMM", { locale: ptBR });
   const filterEventos = eventos.filter(
     (evento: any) =>
       format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
@@ -238,6 +239,10 @@ function ListaEventos({
                   dataFim={evento.dataFim}
                   horaInicio={evento.horaInicio}
                   horaFim={evento.horaFim}
+                  farda={evento.farda}
+                  trabalhoId={evento.trabalho}
+                  lista={evento.lista}
+                  observacao={evento.observacao}
                   index={index}
                   setIndex={setIndex}
                   setDiaSelecionado={setDiaSelecionado}
