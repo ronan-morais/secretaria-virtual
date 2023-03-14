@@ -70,7 +70,7 @@ export function Lista({
       {index === id && (
         <div className="text-sm p-5 -mt-7 flex flex-col gap-2">
           <div className="flex flex-row items-center gap-1 text-sm text-begeEscuro">
-            <HiOutlineCalendar className="w-5 h-5" /> Data:{" "}
+            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
             <b>
               {format(parseISO(dataInicio), "iiii, d 'de' MMMM", {
                 locale: ptBR,
@@ -79,11 +79,11 @@ export function Lista({
           </div>
           <div className="flex flex-row items-center gap-5 text-sm text-begeEscuro">
             <div className="flex flex-row gap-1">
-              <HiOutlineClock className="w-5 h-5" /> Horario:{" "}
+              <HiOutlineClock className="w-5 h-5 text-begeMedio" /> Horario:{" "}
               <b>{horaInicio}</b>
             </div>
             <div className="flex flex-row gap-1">
-              <TbHanger className="w-5 h-5" /> Farda: <b>{farda}</b>
+              <TbHanger className="w-5 h-5 text-begeMedio" /> Farda: <b>{farda}</b>
             </div>
           </div>
         </div>
