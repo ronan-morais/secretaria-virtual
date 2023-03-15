@@ -110,7 +110,7 @@ export function Lista({
           <div className="pt-3 flex w-full md:justify-start gap-3">
             <button
               type="button"
-              className="bg-begeEscuro font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
+              className="bg-dourado font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
             >
               <HiOutlineInformationCircle className="w-6 h-6" /> Mais
               informações

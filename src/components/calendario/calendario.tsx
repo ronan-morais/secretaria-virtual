@@ -15,7 +15,7 @@ import {
   startOfToday,
 } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { Lista } from "./lista";
 
@@ -90,12 +90,24 @@ export function CalendarioLista() {
     setMesAtual(format(new Date(), "MMM-yyyy"));
     setDiaSelecionado(hoje);
     setIndex(0);
+
+    const data = eventos.find(evento =>
+      isSameDay(hoje, parseISO(evento.dataInicio))
+    );
+    data ? setIndex(data.id) : setIndex(0);
   }
 
   function proximoMes() {
     const primeiroDiaProximoMes = add(primeiroDiaMesAtual, { months: 1 });
     setMesAtual(format(primeiroDiaProximoMes, "MMM-yyyy"));
   }
+
+  useEffect(() => {
+    const data = eventos.find(evento =>
+      isSameDay(hoje, parseISO(evento.dataInicio))
+    );
+    data ? setIndex(data.id) : setIndex(0);
+  }, []);
 
   return (
     <div className="pt-16 px-5">
