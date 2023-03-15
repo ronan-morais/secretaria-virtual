@@ -100,7 +100,7 @@ export function CalendarioLista() {
   return (
     <div className="pt-16 px-5">
       <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-6xl md:px-6">
-        <div className="flex flex-col md:flex-row md:divide-x md:divide-gray-300">
+        <div className="flex flex-col pb-16 md:flex-row md:divide-x md:divide-gray-300">
           <div className="md:pr-14 w-full md:w-[40%] lg:w-1/3">
             <div className="flex items-center">
               <h2 className="flex-auto text-sm sm:text-base font-bold text-begeEscuro capitalize">

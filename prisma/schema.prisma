@@ -92,3 +92,17 @@ model Perfis {
 
   usuario Usuarios?
 }
+
+model Trabalhos {
+  trabalhoId Int      @id @unique @default(autoincrement())
+  nome       String
+  dataInicio DateTime
+  horaInicio String
+  dataFim    DateTime
+  horaFim    String
+  trabalho   Int
+  farda      String
+  hinario    String
+  lista      Json
+  observacao String
+}

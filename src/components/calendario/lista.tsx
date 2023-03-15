@@ -74,35 +74,37 @@ export function Lista({
               "font-normal text-sm ml-2 flex flex-row items-center gap-1"
             )}
           >
-            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> {format(parseISO(dataInicio), "dd/MM")}
+            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
+            {format(parseISO(dataInicio), "dd/MM")}
           </span>
         </div>
       </div>
       {index === id && (
         <div className="text-xs md:text-sm p-5 -mt-7 flex flex-col gap-2">
-          <div className="flex flex-row items-center gap-1 text-begeEscuro">
-            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
-            <b>
-              {format(parseISO(dataInicio), "iiii, d 'de' MMMM", {
-                locale: ptBR,
-              })}
-            </b>
-          </div>
-          <div className="flex flex-row items-center gap-5 text-begeEscuro">
+          <div className="flex flex-col lg:flex-row gap-2 lg:gap-5 text-begeEscuro">
             <div className="flex flex-row gap-1 items-center">
-              <HiOutlineClock className="w-5 h-5 text-begeMedio" /> Horario:{" "}
-              <b>{horaInicio}</b>
+              <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
+              <b>
+                {format(parseISO(dataInicio), "iiii, d 'de' MMMM", {
+                  locale: ptBR,
+                })}
+              </b>
             </div>
-            <div className="flex flex-row gap-1 items-center">
-              <TbHanger className="w-5 h-5 text-begeMedio" /> Farda:{" "}
-              <b>{farda}</b>
+            <div className="flex flex-row gap-5">
+              <div className="flex flex-row gap-1 items-center">
+                <HiOutlineClock className="w-5 h-5 text-begeMedio" /> Horario:{" "}
+                <b>{horaInicio}</b>
+              </div>
+              <div className="flex flex-row gap-1 items-center">
+                <TbHanger className="w-5 h-5 text-begeMedio" /> Farda:{" "}
+                <b>{farda}</b>
+              </div>
             </div>
           </div>
           <div className="flex flex-row items-start gap-1  text-begeEscuro">
             <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
-            <span className="pt-1 sm:pt-0">
-              Hinário:
-              <b>{hinario}</b>{" "}
+            <span className="pt-1">
+              Hinário: <b>{hinario}</b>
             </span>
           </div>
           <div className="pt-3 flex w-full md:justify-start gap-3">
