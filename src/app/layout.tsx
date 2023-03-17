@@ -1,6 +1,7 @@
 import { Inter } from "@next/font/google";
 import { Header } from "@/components/header";
 import "./globals.css";
+import { ReactQueryProvider } from "@/utils/reactQuery";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -18,7 +19,9 @@ export default function RootLayout({
         <div className="w-full">
           <Header />
         </div>
-        <div className="w-full">{children}</div>
+        <div className="w-full">
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </div>
       </body>
     </html>
   );

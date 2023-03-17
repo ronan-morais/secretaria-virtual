@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import {
@@ -17,9 +18,10 @@ import {
 import { ptBR } from "date-fns/locale";
 import { useEffect, useState } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { useQuery } from "@tanstack/react-query";
 import { Lista } from "./lista";
 
-const eventos = [
+const trabalhos = [
   {
     id: 1,
     nome: "Concentração",
@@ -65,6 +67,11 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+const fetchTrabalhos = async () => {
+  const data = await fetch(`api/trabalhos`);
+  return data;
+};
+
 export function CalendarioLista() {
   const hoje = startOfToday();
   const [diaSelecionado, setDiaSelecionado] = useState(hoje);
@@ -72,12 +79,15 @@ export function CalendarioLista() {
   const primeiroDiaMesAtual = parse(mesAtual, "MMM-yyyy", new Date());
   const [index, setIndex] = useState(0);
 
+  /* const {data, error, isLoading} = useQuery("teste", fetchTrabalhos)
+  console.log(data) */
+
   const dias = eachDayOfInterval({
     start: primeiroDiaMesAtual,
     end: endOfMonth(primeiroDiaMesAtual),
   });
 
-  let diasEventos = eventos.filter(evento =>
+  let diasEventos = trabalhos.filter(evento =>
     isSameDay(parseISO(evento.dataInicio), diaSelecionado)
   );
 
@@ -91,7 +101,7 @@ export function CalendarioLista() {
     setDiaSelecionado(hoje);
     setIndex(0);
 
-    const data = eventos.find(evento =>
+    const data = trabalhos.find(evento =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
     data ? setIndex(data.id) : setIndex(0);
@@ -103,7 +113,7 @@ export function CalendarioLista() {
   }
 
   useEffect(() => {
-    const data = eventos.find(evento =>
+    const data = trabalhos.find(evento =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
     data ? setIndex(data.id) : setIndex(0);
@@ -165,7 +175,7 @@ export function CalendarioLista() {
                       onClick={() => {
                         setDiaSelecionado(dia);
                         setIndex(0);
-                        eventos.some(evento => {
+                        trabalhos.some(evento => {
                           if (isSameDay(dia, parseISO(evento.dataInicio))) {
                             setIndex(evento.id);
                           }
@@ -193,7 +203,7 @@ export function CalendarioLista() {
                         !isEqual(dia, diaSelecionado) && "hover:bg-white",
                         (isEqual(dia, diaSelecionado) || isToday(dia)) &&
                           "font-semibold",
-                        eventos.some(evento =>
+                        trabalhos.some(evento =>
                           isSameDay(parseISO(evento.dataInicio), dia)
                         ) && "ring ring-begeMedio",
                         "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-bgMedio transition-all"
@@ -210,7 +220,7 @@ export function CalendarioLista() {
           </div>
           <div className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14">
             <ListaEventos
-              eventos={eventos}
+              eventos={trabalhos}
               index={index}
               setIndex={setIndex}
               mesAtual={mesAtual}
