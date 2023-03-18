@@ -11,98 +11,158 @@ import {
   HiOutlineInformationCircle,
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
+import { trabalhosProps } from "./calendario";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 interface ListaProps {
-  id: number;
-  nome: string;
-  dataInicio: string;
-  dataFim: string;
-  horaInicio: string;
-  horaFim: string;
-  farda: string;
-  hinario: string;
-  trabalhoId: number;
-  lista: string[];
-  observacao: string;
+  trabalhos: {
+    id: number;
+    nome: string;
+    dataInicio: string;
+    horaInicio: string;
+    dataFim: string;
+    horaFim: string;
+    trabalho: number;
+    farda: string;
+    hinario: string;
+    lista: {
+      idUsuario: number;
+      funcao: number;
+    }[];
+    observacao: string;
+  }[];
+  hoje: Date;
   index: number;
   setIndex: Dispatch<SetStateAction<number>>;
+  mesAtual: string;
+  diaSelecionado: Date;
   setDiaSelecionado: Dispatch<SetStateAction<Date>>;
+  primeiroDiaMesAtual: Date;
 }
 
 export function Lista({
-  id,
-  nome,
-  dataInicio,
-  dataFim,
-  horaInicio,
-  horaFim,
-  farda,
-  hinario,
-  trabalhoId,
-  lista,
-  observacao,
+  trabalhos,
+  hoje,
+  index,
+  setIndex,
+  mesAtual,
+  setDiaSelecionado,
+}: ListaProps) {
+  const filterEventos = trabalhos.filter(
+    (evento: any) =>
+      format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
+  );
+  if (filterEventos.length > 0) {
+    return (
+      <div className="flex flex-col w-full">
+        {trabalhos.map((trabalho: any, key: number) => {
+          if (format(parseISO(trabalho.dataInicio), "MMM-yyyy") == mesAtual) {
+            return (
+              <>
+                <Item
+                  key={key}
+                  trabalho={trabalho}
+                  hoje={hoje}
+                  index={index}
+                  setIndex={setIndex}
+                  setDiaSelecionado={setDiaSelecionado}
+                />
+              </>
+            );
+          }
+        })}
+      </div>
+    );
+  } else {
+    return (
+      <div className="font-bold text-sm text-begeMedio p-5">
+        Nenhum trabalho.
+      </div>
+    );
+  }
+}
+
+interface ItemProps {
+  trabalho: {
+    id: number;
+    nome: string;
+    dataInicio: string;
+    horaInicio: string;
+    dataFim: string;
+    horaFim: string;
+    trabalho: number;
+    farda: string;
+    hinario: string;
+    lista: {
+      idUsuario: number;
+      funcao: number;
+    }[];
+    observacao: string;
+  };
+  index: number;
+  setIndex: Dispatch<SetStateAction<number>>;
+  setDiaSelecionado: Dispatch<SetStateAction<Date>>;
+  hoje: Date;
+}
+
+function Item({
+  trabalho,
   index,
   setIndex,
   setDiaSelecionado,
-}: ListaProps) {
-  const hoje = new Date();
+  hoje,
+}: ItemProps) {
   const [parent] = useAutoAnimate();
-  const antes = isBefore(parseISO(dataInicio), hoje);
-  const depois = isAfter(parseISO(dataInicio), hoje);
-  const mesmoDia = isSameDay(parseISO(dataInicio), hoje);
+  const antes = isBefore(parseISO(trabalho.dataInicio), hoje);
+  const depois = isAfter(parseISO(trabalho.dataInicio), hoje);
+  const mesmoDia = isSameDay(parseISO(trabalho.dataInicio), hoje);
 
   const handleSetIndex = (id: number) => {
     index !== id && setIndex(id);
   };
 
-  useEffect(() => {
-    console.log("antes", antes);
-    console.log("depois", depois);
-    console.log("mesmo dia", mesmoDia);
-    console.log("-");
-  }, [antes, depois, mesmoDia]);
+  useEffect(() => {}, [antes, depois, mesmoDia]);
 
   return (
     <div
       className={classNames(
         antes && !mesmoDia && "italic text-begeMedio",
         (depois || mesmoDia) &&
-          "text-begeEscuro border border-gray-300 bg-white rounded-lg mb-2"
+          "text-begeEscuro border border-gray-300 bg-white rounded-xl mb-2"
       )}
       ref={parent}
     >
       <div
         onClick={() => {
-          handleSetIndex(id);
-          setDiaSelecionado(parseISO(dataInicio));
+          handleSetIndex(trabalho.id);
+          setDiaSelecionado(parseISO(trabalho.dataInicio));
           window.scrollBy(0, window.innerHeight);
         }}
         className="font-bold text-md lg:text-xl tracking-tight cursor-pointer"
       >
         <div className="p-5 text-base md:text-lg flex flex-row items-center">
-          {nome}
+          {trabalho.nome}
           <span
             className={classNames(
-              index === id && "invisible",
+              index === trabalho.id && "invisible",
               "font-normal text-sm ml-2 flex flex-row items-center gap-1"
             )}
           >
             <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
-            {format(parseISO(dataInicio), "dd/MM")}
+            {format(parseISO(trabalho.dataInicio), "dd/MM")}
           </span>
         </div>
       </div>
-      {index === id && (
+      {index === trabalho.id && (
         <div className="text-xs md:text-sm p-5 -mt-7 flex flex-col gap-2">
           <div className="flex flex-col lg:flex-row gap-2 lg:gap-5">
             <div className="flex flex-row gap-1 items-center">
               <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
               <b>
-                {format(parseISO(dataInicio), "iiii, d 'de' MMMM", {
+                {format(parseISO(trabalho.dataInicio), "iiii, d 'de' MMMM", {
                   locale: ptBR,
                 })}
               </b>
@@ -110,18 +170,18 @@ export function Lista({
             <div className="flex flex-row gap-5">
               <div className="flex flex-row gap-1 items-center">
                 <HiOutlineClock className="w-5 h-5 text-begeMedio" /> Horario:{" "}
-                <b>{horaInicio}</b>
+                <b>{trabalho.horaInicio}</b>
               </div>
               <div className="flex flex-row gap-1 items-center">
                 <TbHanger className="w-5 h-5 text-begeMedio" /> Farda:{" "}
-                <b>{farda}</b>
+                <b>{trabalho.farda}</b>
               </div>
             </div>
           </div>
           <div className="flex flex-row items-start gap-1">
             <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
             <span className="pt-1">
-              Hinário: <b>{hinario}</b>
+              Hinário: <b>{trabalho.hinario}</b>
             </span>
           </div>
           <div className="pt-3 flex w-full md:justify-start gap-3">

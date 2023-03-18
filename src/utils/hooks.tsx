@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 
 export const useScreenSize = () => {
@@ -25,4 +27,8 @@ export const useScreenSize = () => {
     };
   }, []);
   return { size: windowSize, responsive: responsive(windowSize) };
+};
+
+export const useClassNames = (...classes: any[]) => {
+  return classes.filter(Boolean).join(" ");
 };
