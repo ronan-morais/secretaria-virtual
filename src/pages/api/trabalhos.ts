@@ -13,22 +13,22 @@ export default async function handler(
   if (req.method === "GET") {
     
     //const data = await prisma.trabalhos.findMany()
-    res.status(200).json({ "data" })
+    res.status(200).json( "data" )
 
   } else if (req.method === "POST") {
     
     //const data = await prisma.trabalhos.create({data:body})
-    res.status(200).json({ "data" })
+    res.status(200).json( "data" )
 
   } else if (req.method === "PUT") {
     
     //const dataPrisma = await prisma.trabalhos.findMany()
-    res.status(200).json({ "dataPrisma" })
+    res.status(200).json( "dataPrisma" )
 
   } else if (req.method === "DELETE") {
     
     //const dataPrisma = await prisma.trabalhos.findMany()
-    res.status(200).json({ "dataPrisma" })
+    res.status(200).json( "dataPrisma" )
 
   }
 }
