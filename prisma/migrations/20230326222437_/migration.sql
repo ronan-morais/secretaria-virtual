@@ -1,18 +1,8 @@
-/*
-  Warnings:
-
-  - You are about to drop the `Usuario` table. If the table is not empty, all the data it contains will be lost.
-
-*/
--- DropTable
-DROP TABLE `Usuario`;
-
 -- CreateTable
 CREATE TABLE `Usuarios` (
-    `idUsuario` VARCHAR(191) NOT NULL,
-    `idPerfil` VARCHAR(191) NOT NULL,
-    `idDadosUsuario` VARCHAR(191) NULL,
-    `idAnamnese` VARCHAR(191) NULL,
+    `usuarioId` INTEGER NOT NULL AUTO_INCREMENT,
+    `perfilId` INTEGER NULL,
+    `amigoId` INTEGER NULL,
     `dataCriacao` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `dataUpdate` DATETIME(3) NOT NULL,
     `usuario` VARCHAR(191) NOT NULL,
@@ -20,37 +10,39 @@ CREATE TABLE `Usuarios` (
     `senha` VARCHAR(191) NOT NULL,
     `avatar` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `Usuarios_idUsuario_key`(`idUsuario`),
-    PRIMARY KEY (`idUsuario`)
+    UNIQUE INDEX `Usuarios_usuarioId_key`(`usuarioId`),
+    UNIQUE INDEX `Usuarios_perfilId_key`(`perfilId`),
+    UNIQUE INDEX `Usuarios_amigoId_key`(`amigoId`),
+    UNIQUE INDEX `Usuarios_email_key`(`email`),
+    PRIMARY KEY (`usuarioId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Amigos` (
-    `idAmigo` VARCHAR(191) NOT NULL,
-    `idUsuario` VARCHAR(191) NULL,
-    `idPerfil` VARCHAR(191) NULL,
-    `idDadosUsuario` VARCHAR(191) NULL,
-    `idAnamnese` VARCHAR(191) NULL,
+    `amigoId` INTEGER NOT NULL AUTO_INCREMENT,
+    `dadosUsuarioId` INTEGER NULL,
+    `anamneseId` INTEGER NULL,
     `dataCriacao` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `dataUpdate` DATETIME(3) NOT NULL,
 
-    UNIQUE INDEX `Amigos_idAmigo_key`(`idAmigo`),
-    PRIMARY KEY (`idAmigo`)
+    UNIQUE INDEX `Amigos_amigoId_key`(`amigoId`),
+    UNIQUE INDEX `Amigos_dadosUsuarioId_key`(`dadosUsuarioId`),
+    UNIQUE INDEX `Amigos_anamneseId_key`(`anamneseId`),
+    PRIMARY KEY (`amigoId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
-CREATE TABLE `dadosUsuarios` (
-    `idDadosUsuario` VARCHAR(191) NOT NULL,
-    `idUsuario` VARCHAR(191) NOT NULL,
+CREATE TABLE `DadosUsuarios` (
+    `dadosUsuarioId` INTEGER NOT NULL AUTO_INCREMENT,
     `dataCriacao` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `dataUpdate` DATETIME(3) NOT NULL,
     `genero` VARCHAR(191) NULL,
     `nome` VARCHAR(191) NOT NULL,
     `sobrenome` VARCHAR(191) NULL,
     `apelido` VARCHAR(191) NULL,
-    `cpf` INTEGER NULL,
-    `telefone` INTEGER NULL,
-    `whatsapp` INTEGER NULL,
+    `cpf` VARCHAR(191) NULL,
+    `telefone` VARCHAR(191) NULL,
+    `whatsapp` VARCHAR(191) NULL,
     `dataNascimento` DATETIME(3) NULL,
     `logradouro` VARCHAR(191) NULL,
     `bairro` VARCHAR(191) NULL,
@@ -62,14 +54,14 @@ CREATE TABLE `dadosUsuarios` (
     `escolaridade` VARCHAR(191) NULL,
     `observacao` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `dadosUsuarios_idDadosUsuario_key`(`idDadosUsuario`),
-    PRIMARY KEY (`idDadosUsuario`)
+    UNIQUE INDEX `DadosUsuarios_dadosUsuarioId_key`(`dadosUsuarioId`),
+    UNIQUE INDEX `DadosUsuarios_cpf_key`(`cpf`),
+    PRIMARY KEY (`dadosUsuarioId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Anamneses` (
-    `idAnamnese` VARCHAR(191) NOT NULL,
-    `idUsuario` VARCHAR(191) NOT NULL,
+    `anamneseId` INTEGER NOT NULL AUTO_INCREMENT,
     `dataCriacao` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `dataUpdate` DATETIME(3) NOT NULL,
     `dataAnamnese` DATETIME(3) NOT NULL,
@@ -91,15 +83,33 @@ CREATE TABLE `Anamneses` (
     `anexo` VARCHAR(191) NULL,
     `observacao` VARCHAR(191) NULL,
 
-    UNIQUE INDEX `Anamneses_idAnamnese_key`(`idAnamnese`),
-    PRIMARY KEY (`idAnamnese`)
+    UNIQUE INDEX `Anamneses_anamneseId_key`(`anamneseId`),
+    PRIMARY KEY (`anamneseId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- CreateTable
 CREATE TABLE `Perfis` (
-    `idPerfil` VARCHAR(191) NOT NULL,
+    `perfilId` INTEGER NOT NULL AUTO_INCREMENT,
     `perfil` VARCHAR(191) NOT NULL,
 
-    UNIQUE INDEX `Perfis_idPerfil_key`(`idPerfil`),
-    PRIMARY KEY (`idPerfil`)
+    UNIQUE INDEX `Perfis_perfilId_key`(`perfilId`),
+    PRIMARY KEY (`perfilId`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- CreateTable
+CREATE TABLE `Trabalhos` (
+    `trabalhoId` INTEGER NOT NULL AUTO_INCREMENT,
+    `nome` VARCHAR(191) NOT NULL,
+    `dataInicio` DATETIME(3) NOT NULL,
+    `horaInicio` VARCHAR(191) NOT NULL,
+    `dataFim` DATETIME(3) NOT NULL,
+    `horaFim` VARCHAR(191) NOT NULL,
+    `trabalho` INTEGER NOT NULL,
+    `farda` VARCHAR(191) NOT NULL,
+    `hinario` VARCHAR(191) NOT NULL,
+    `lista` JSON NOT NULL,
+    `observacao` VARCHAR(191) NOT NULL,
+
+    UNIQUE INDEX `Trabalhos_trabalhoId_key`(`trabalhoId`),
+    PRIMARY KEY (`trabalhoId`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;

@@ -49,15 +49,12 @@ export interface trabalhosProps {
 export function Calendario({
   hoje,
   trabalhos,
-  index,
   setIndex,
-  mesAtual,
   setMesAtual,
   diaSelecionado,
   setDiaSelecionado,
   primeiroDiaMesAtual,
 }: trabalhosProps) {
-  console.log(trabalhos.map((teste: any) => console.log(teste)));
 
   const dias = eachDayOfInterval({
     start: primeiroDiaMesAtual,

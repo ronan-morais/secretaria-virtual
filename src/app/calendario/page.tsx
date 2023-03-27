@@ -3,7 +3,8 @@
 import { format, parse, startOfToday } from "date-fns";
 import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import api from "@/utils/axios";
 
 const trabalhos = [
   {
@@ -47,12 +48,22 @@ const trabalhos = [
   },
 ];
 
+const fetchTrabalhos = async () => {
+  const { data } = await api.get(`api/trabalhos`);
+  return data;
+};
+
 export default function Calendario() {
   const hoje = startOfToday();
   const [diaSelecionado, setDiaSelecionado] = useState(hoje);
   const [mesAtual, setMesAtual] = useState(format(hoje, "MMM-yyyy"));
   const [index, setIndex] = useState(0);
   const primeiroDiaMesAtual = parse(mesAtual, "MMM-yyyy", new Date());
+
+  useEffect(() => {
+    const dataTrabalhos = fetchTrabalhos()
+    console.log("data", dataTrabalhos);
+  }, []);
 
   return (
     <main className="w-full flex flex-col">

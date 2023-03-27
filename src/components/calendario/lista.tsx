@@ -1,5 +1,3 @@
-//"use client";
-
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { parseISO, format, isBefore, isAfter, isSameDay } from "date-fns";
 import { ptBR } from "date-fns/locale";
@@ -7,11 +5,9 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import {
   HiOutlineCalendar,
   HiOutlineClock,
-  HiOutlineCheckCircle,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
-import { trabalhosProps } from "./calendario";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
