@@ -4,8 +4,8 @@ import api from "@/utils/axios";
 import { Suspense } from "react";
 
 const getTrabalhos = async () => {
-  const { data } = await api.get(`/api/trabalhos`);
-  const { trabalhos } = await data;
+  const data = await fetch(`${process.env.HOSTNAME}/api/trabalhos`);
+  const { trabalhos } = await data.json();
   return trabalhos;
 };
 
