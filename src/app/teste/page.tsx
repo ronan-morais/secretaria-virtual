@@ -1,5 +1,9 @@
+//"use client";
+
 import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
+import { useCalendarioStore } from "store";
+import { useGetCalendario } from "@/utils/hooks";
 
 const trabalhos = [
   {
@@ -18,7 +22,7 @@ const trabalhos = [
   {
     id: 2,
     nome: "São José",
-    dataInicio: "2023-04-05",
+    dataInicio: "2023-03-19",
     horaInicio: "10:30",
     dataFim: "2023-03-19",
     horaFim: "22:00",
@@ -31,9 +35,9 @@ const trabalhos = [
   {
     id: 3,
     nome: "Concentração",
-    dataInicio: "2023-04-30",
+    dataInicio: "2023-03-31",
     horaInicio: "20:30",
-    dataFim: "2023-04-30",
+    dataFim: "2023-03-31",
     horaFim: "00:00",
     farda: "azul",
     hinario: "Oração + Concentração + Hinos novos",
@@ -44,17 +48,38 @@ const trabalhos = [
 ];
 
 export default function Calendario() {
-  
+  const calendarioStates = useCalendarioStore<any>(state => state);
+  //const hook = useGetCalendario();
+
   return (
     <main className="w-full flex flex-col">
       <div className="pt-16 px-5">
         <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-6xl md:px-6">
           <div className="flex flex-col pb-16 md:flex-row md:divide-x md:divide-gray-300">
             <div className="md:pr-14 w-full md:w-[40%] lg:w-1/3">
-              <Calendar trabalhos={trabalhos} />
+              <Calendar
+                trabalhos={trabalhos}
+                hoje={calendarioStates.hoje}
+                index={calendarioStates.index}
+                setIndex={calendarioStates.setIndex}
+                mesAtual={calendarioStates.mesAtual}
+                setMesAtual={calendarioStates.setMesAtual}
+                diaSelecionado={calendarioStates.diaSelecionado}
+                setDiaSelecionado={calendarioStates.setDiaSelecionado}
+                primeiroDiaMesAtual={calendarioStates.primeiroDiaMesAtual}
+              />
             </div>
             <div className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14">
-              <Lista trabalhos={trabalhos} />
+              <Lista
+                trabalhos={trabalhos}
+                hoje={calendarioStates.hoje}
+                index={calendarioStates.index}
+                setIndex={calendarioStates.setIndex}
+                mesAtual={calendarioStates.mesAtual}
+                diaSelecionado={calendarioStates.diaSelecionado}
+                setDiaSelecionado={calendarioStates.setDiaSelecionado}
+                primeiroDiaMesAtual={calendarioStates.primeiroDiaMesAtual}
+              />
             </div>
           </div>
         </div>

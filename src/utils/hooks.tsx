@@ -1,6 +1,9 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
+import api from "./axios";
+import { isSameDay, parseISO } from "date-fns";
+import { useCalendarioStore } from "store";
 
 export const useScreenSize = () => {
   const [windowSize, setWindowSize] = useState(0);
@@ -31,4 +34,20 @@ export const useScreenSize = () => {
 
 export const useClassNames = (...classes: any[]) => {
   return classes.filter(Boolean).join(" ");
+};
+
+export const useGetCalendario = async () => {
+  const { data } = await api.get("api/trabalhos");
+  return data;
+};
+
+export const useSetIndex = (trabalhos: any) => {
+  const hoje = useCalendarioStore((state: any) => state.hoje);
+  const data = trabalhos.find((trabalho: any) =>
+    isSameDay(hoje, parseISO(trabalho.dataInicio))
+  );
+  if (data) {
+    return data.id;
+  }
+  return 0;
 };

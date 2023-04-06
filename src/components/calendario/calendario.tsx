@@ -1,3 +1,4 @@
+"use client";
 /* eslint-disable react-hooks/exhaustive-deps */
 import {
   add,
@@ -12,8 +13,9 @@ import {
   parseISO,
 } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
+import { useCalendarioStore } from "store";
 
 export const classNames = (...classes: any[]) => {
   return classes.filter(Boolean).join(" ");
@@ -36,33 +38,25 @@ export interface trabalhosProps {
     }[];
     observacao: string;
   }[];
-  hoje: Date;
-  index: number;
-  setIndex: Dispatch<SetStateAction<number>>;
-  mesAtual: string;
-  setMesAtual: Dispatch<SetStateAction<string>>;
-  diaSelecionado: Date;
-  setDiaSelecionado: Dispatch<SetStateAction<Date>>;
-  primeiroDiaMesAtual: Date;
 }
 
-export function Calendario({
-  hoje,
-  trabalhos,
-  setIndex,
-  setMesAtual,
-  diaSelecionado,
-  setDiaSelecionado,
-  primeiroDiaMesAtual,
-}: trabalhosProps) {
+export function Calendario({ trabalhos }: trabalhosProps) {
+  const hoje = useCalendarioStore((state: any) => state.hoje);
+  const diaSelecionado = useCalendarioStore((state: any) => state.diaSelecionado);
+  const setDiaSelecionado = useCalendarioStore((state: any) => state.setDiaSelecionado);
+  const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
+  const setMesAtual = useCalendarioStore((state: any) => state.setMesAtual);
+  const index = useCalendarioStore((state: any) => state.index);
+  const setIndex = useCalendarioStore((state: any) => state.setIndex);
+  const primeiroDiaMesAtual = useCalendarioStore((state: any) => state.primeiroDiaMesAtual);
 
   const dias = eachDayOfInterval({
-    start: primeiroDiaMesAtual,
-    end: endOfMonth(primeiroDiaMesAtual),
+    start: primeiroDiaMesAtual(),
+    end: endOfMonth(primeiroDiaMesAtual()),
   });
 
   function mesAnterior() {
-    const primeiroDiaMesAnterior = add(primeiroDiaMesAtual, { months: -1 });
+    const primeiroDiaMesAnterior = add(primeiroDiaMesAtual(), { months: -1 });
     setMesAtual(format(primeiroDiaMesAnterior, "MMM-yyyy"));
   }
 
@@ -70,15 +64,14 @@ export function Calendario({
     setMesAtual(format(new Date(), "MMM-yyyy"));
     setDiaSelecionado(hoje);
     setIndex(0);
-
     const data: any = trabalhos.find(evento =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
-    data ? setIndex(data.id) : setIndex(0);
+    data && setIndex(data.id);
   }
 
   function proximoMes() {
-    const primeiroDiaProximoMes = add(primeiroDiaMesAtual, { months: 1 });
+    const primeiroDiaProximoMes = add(primeiroDiaMesAtual(), { months: 1 });
     setMesAtual(format(primeiroDiaProximoMes, "MMM-yyyy"));
   }
 
@@ -93,7 +86,7 @@ export function Calendario({
     <>
       <div className="flex items-center">
         <h2 className="flex-auto text-sm sm:text-base font-bold text-begeEscuro capitalize">
-          {format(primeiroDiaMesAtual, "MMMM yyyy", { locale: ptBR })}
+          {format(primeiroDiaMesAtual(), "MMMM yyyy", { locale: ptBR })}
         </h2>
         <button type="button" onClick={mesAnterior} className="p-3">
           <span className="sr-only">Mês anterior</span>

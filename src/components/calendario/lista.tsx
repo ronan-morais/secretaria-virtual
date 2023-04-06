@@ -1,13 +1,16 @@
+"use client";
+
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { parseISO, format, isBefore, isAfter, isSameDay } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Dispatch, SetStateAction } from "react";
 import {
   HiOutlineCalendar,
   HiOutlineClock,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
+import { useCalendarioStore } from "store";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -30,27 +33,17 @@ interface ListaProps {
     }[];
     observacao: string;
   }[];
-  hoje: Date;
-  index: number;
-  setIndex: Dispatch<SetStateAction<number>>;
-  mesAtual: string;
-  diaSelecionado: Date;
-  setDiaSelecionado: Dispatch<SetStateAction<Date>>;
-  primeiroDiaMesAtual: Date;
 }
 
-export function Lista({
-  trabalhos,
-  hoje,
-  index,
-  setIndex,
-  mesAtual,
-  setDiaSelecionado,
-}: ListaProps) {
+export function Lista({ trabalhos }: ListaProps) {
+  const hoje = useCalendarioStore((state: any) => state.hoje);
+  const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
+
   const filterEventos = trabalhos.filter(
     (evento: any) =>
       format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
   );
+
   if (filterEventos.length > 0) {
     return (
       <div className="flex flex-col w-full">
@@ -58,14 +51,7 @@ export function Lista({
           if (format(parseISO(trabalho.dataInicio), "MMM-yyyy") == mesAtual) {
             return (
               <>
-                <Item
-                  key={key}
-                  trabalho={trabalho}
-                  hoje={hoje}
-                  index={index}
-                  setIndex={setIndex}
-                  setDiaSelecionado={setDiaSelecionado}
-                />
+                <Item key={key} trabalho={trabalho} hoje={hoje} />
               </>
             );
           }
@@ -98,101 +84,98 @@ interface ItemProps {
     }[];
     observacao: string;
   };
-  index: number;
-  setIndex: Dispatch<SetStateAction<number>>;
-  setDiaSelecionado: Dispatch<SetStateAction<Date>>;
   hoje: Date;
 }
 
-function Item({
-  trabalho,
-  index,
-  setIndex,
-  setDiaSelecionado,
-  hoje,
-}: ItemProps) {
+function Item({ trabalho, hoje }: ItemProps) {
   const [parent] = useAutoAnimate();
+  const index = useCalendarioStore((state: any) => state.index);
+  const setIndex = useCalendarioStore((state: any) => state.setIndex);
+  const setDiaSelecionado = useCalendarioStore(
+    (state: any) => state.setDiaSelecionado
+  );
   const antes = isBefore(parseISO(trabalho.dataInicio), hoje);
   const depois = isAfter(parseISO(trabalho.dataInicio), hoje);
   const mesmoDia = isSameDay(parseISO(trabalho.dataInicio), hoje);
 
   const handleSetIndex = (id: number) => {
     index !== id && setIndex(id);
+    console.log("xxx", id);
   };
 
-  useEffect(() => {}, [antes, depois, mesmoDia]);
-
   return (
-    <div
-      className={classNames(
-        antes && !mesmoDia && "italic text-begeMedio",
-        (depois || mesmoDia) &&
-          "text-begeEscuro border border-gray-300 bg-white rounded-xl mb-2"
-      )}
-      ref={parent}
-    >
+    <>
       <div
-        onClick={() => {
-          handleSetIndex(trabalho.id);
-          setDiaSelecionado(parseISO(trabalho.dataInicio));
-          window.scrollBy(0, window.innerHeight);
-        }}
-        className="font-bold text-md lg:text-xl tracking-tight cursor-pointer"
+        className={classNames(
+          antes && !mesmoDia && "italic text-begeMedio",
+          (depois || mesmoDia) &&
+            "text-begeEscuro border border-gray-300 bg-white rounded-xl mb-2"
+        )}
+        ref={parent}
       >
-        <div className="p-5 text-base md:text-lg flex flex-row items-center">
-          {trabalho.nome}
-          <span
-            className={classNames(
-              index === trabalho.id && "invisible",
-              "font-normal text-sm ml-2 flex flex-row items-center gap-1"
-            )}
-          >
-            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
-            {format(parseISO(trabalho.dataInicio), "dd/MM")}
-          </span>
-        </div>
-      </div>
-      {index === trabalho.id && (
-        <div className="text-xs md:text-sm p-5 -mt-7 flex flex-col gap-2">
-          <div className="flex flex-col lg:flex-row gap-2 lg:gap-5">
-            <div className="flex flex-row gap-1 items-center">
-              <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
-              <b>
-                {format(parseISO(trabalho.dataInicio), "iiii, d 'de' MMMM", {
-                  locale: ptBR,
-                })}
-              </b>
-            </div>
-            <div className="flex flex-row gap-5">
-              <div className="flex flex-row gap-1 items-center">
-                <HiOutlineClock className="w-5 h-5 text-begeMedio" /> Horario:{" "}
-                <b>{trabalho.horaInicio}</b>
-              </div>
-              <div className="flex flex-row gap-1 items-center">
-                <TbHanger className="w-5 h-5 text-begeMedio" /> Farda:{" "}
-                <b>{trabalho.farda}</b>
-              </div>
-            </div>
-          </div>
-          <div className="flex flex-row items-start gap-1">
-            <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
-            <span className="pt-1">
-              Hinário: <b>{trabalho.hinario}</b>
+        <div
+          onClick={() => {
+            handleSetIndex(trabalho.id);
+            setDiaSelecionado(parseISO(trabalho.dataInicio));
+            window.scrollBy(0, window.innerHeight);
+          }}
+          className="font-bold text-md lg:text-xl tracking-tight cursor-pointer"
+        >
+          <div className="p-5 text-base md:text-lg flex flex-row items-center">
+            {trabalho.nome}
+            <span
+              className={classNames(
+                index === trabalho.id && "invisible",
+                "font-normal text-sm ml-2 flex flex-row items-center gap-1"
+              )}
+            >
+              <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
+              {format(parseISO(trabalho.dataInicio), "dd/MM")}
             </span>
           </div>
-          <div className="pt-3 flex w-full md:justify-start gap-3">
-            {(mesmoDia || depois) && (
-              <button
-                type="button"
-                className="bg-dourado font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
-              >
-                <HiOutlineInformationCircle className="w-6 h-6" /> Mais
-                informações
-              </button>
-            )}
-          </div>
         </div>
-      )}
-    </div>
+        {index === trabalho.id && (
+          <div className="text-xs md:text-sm p-5 -mt-7 flex flex-col gap-2">
+            <div className="flex flex-col lg:flex-row gap-2 lg:gap-5">
+              <div className="flex flex-row gap-1 items-center">
+                <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
+                <b>
+                  {format(parseISO(trabalho.dataInicio), "iiii, d 'de' MMMM", {
+                    locale: ptBR,
+                  })}
+                </b>
+              </div>
+              <div className="flex flex-row gap-5">
+                <div className="flex flex-row gap-1 items-center">
+                  <HiOutlineClock className="w-5 h-5 text-begeMedio" /> Horario:{" "}
+                  <b>{trabalho.horaInicio}</b>
+                </div>
+                <div className="flex flex-row gap-1 items-center">
+                  <TbHanger className="w-5 h-5 text-begeMedio" /> Farda:{" "}
+                  <b>{trabalho.farda}</b>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-row items-start gap-1">
+              <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
+              <span className="pt-1">
+                Hinário: <b>{trabalho.hinario}</b>
+              </span>
+            </div>
+            <div className="pt-3 flex w-full md:justify-start gap-3">
+              {(mesmoDia || depois) && (
+                <button
+                  type="button"
+                  className="bg-dourado font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
+                >
+                  <HiOutlineInformationCircle className="w-6 h-6" /> Mais
+                  informações
+                </button>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   );
 }
