@@ -1,7 +1,11 @@
 import { NextResponse } from 'next/server';
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 export async function GET() {
-  const res = await fetch('https://api.github.com/users/ronan-morais');
-  const data = await res.json();
-  return NextResponse.json({ data })
+
+  const trabalhos = await prisma.trabalhos.findMany()
+
+  return NextResponse.json({ trabalhos })
 }

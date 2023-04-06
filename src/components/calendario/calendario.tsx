@@ -23,7 +23,7 @@ export const classNames = (...classes: any[]) => {
 
 export interface trabalhosProps {
   trabalhos: {
-    id: number;
+    trabalhoId: number;
     nome: string;
     dataInicio: string;
     horaInicio: string;
@@ -67,7 +67,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
     const data: any = trabalhos.find(evento =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
-    data && setIndex(data.id);
+    data && setIndex(data.trabalhoId);
   }
 
   function proximoMes() {
@@ -79,7 +79,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
     const data = trabalhos.find(evento =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
-    data ? setIndex(data.id) : setIndex(0);
+    data ? setIndex(data.trabalhoId) : setIndex(0);
   }, []);
 
   return (
@@ -124,7 +124,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
         {dias.map((dia, indexDia) => {
           return (
             <div
-              key={dia.toString()}
+              key={ indexDia/* dia.toString() */}
               className={classNames(
                 indexDia === 0 && colStartClasses[getDay(dia)],
                 "py-1.5"
@@ -137,7 +137,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
                   setIndex(0);
                   trabalhos.some(evento => {
                     if (isSameDay(dia, parseISO(evento.dataInicio))) {
-                      setIndex(evento.id);
+                      setIndex(evento.trabalhoId);
                     }
                   });
                 }}

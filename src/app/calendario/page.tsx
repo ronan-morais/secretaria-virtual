@@ -1,7 +1,8 @@
 import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
+import api from "@/utils/axios";
 
-const trabalhos = [
+/* const trabalhos = [
   {
     id: 1,
     nome: "Concentração",
@@ -41,10 +42,17 @@ const trabalhos = [
     lista: [{ idUsuario: 1, funcao: 1 }],
     observacao: "",
   },
-];
+]; */
 
-export default function Calendario() {
-  
+const getTrabalhos = async () => {
+  const { data } = await api.get("http://localhost:3000/api/trabalhos");
+  const { trabalhos } = await data;
+  return trabalhos;
+};
+
+export default async function Calendario() {
+  const trabalhos = await getTrabalhos();
+
   return (
     <main className="w-full flex flex-col">
       <div className="pt-16 px-5">

@@ -18,7 +18,7 @@ function classNames(...classes: any[]) {
 
 interface ListaProps {
   trabalhos: {
-    id: number;
+    trabalhoId: number;
     nome: string;
     dataInicio: string;
     horaInicio: string;
@@ -69,7 +69,7 @@ export function Lista({ trabalhos }: ListaProps) {
 
 interface ItemProps {
   trabalho: {
-    id: number;
+    trabalhoId: number;
     nome: string;
     dataInicio: string;
     horaInicio: string;
@@ -115,7 +115,7 @@ function Item({ trabalho, hoje }: ItemProps) {
       >
         <div
           onClick={() => {
-            handleSetIndex(trabalho.id);
+            handleSetIndex(trabalho.trabalhoId);
             setDiaSelecionado(parseISO(trabalho.dataInicio));
             window.scrollBy(0, window.innerHeight);
           }}
@@ -125,7 +125,7 @@ function Item({ trabalho, hoje }: ItemProps) {
             {trabalho.nome}
             <span
               className={classNames(
-                index === trabalho.id && "invisible",
+                index === trabalho.trabalhoId && "invisible",
                 "font-normal text-sm ml-2 flex flex-row items-center gap-1"
               )}
             >
@@ -134,7 +134,7 @@ function Item({ trabalho, hoje }: ItemProps) {
             </span>
           </div>
         </div>
-        {index === trabalho.id && (
+        {index === trabalho.trabalhoId && (
           <div className="text-xs md:text-sm p-5 -mt-7 flex flex-col gap-2">
             <div className="flex flex-col lg:flex-row gap-2 lg:gap-5">
               <div className="flex flex-row gap-1 items-center">
