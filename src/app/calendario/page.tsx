@@ -3,7 +3,7 @@ import { Lista } from "@/components/calendario/lista";
 import api from "@/utils/axios";
 
 const getTrabalhos = async () => {
-  const { data } = await api.get("/api/trabalhos");
+  const { data } = await api.get(`/api/trabalhos`);
   const { trabalhos } = await data;
   return trabalhos;
 };
