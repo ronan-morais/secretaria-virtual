@@ -2,50 +2,8 @@ import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
 import api from "@/utils/axios";
 
-/* const trabalhos = [
-  {
-    id: 1,
-    nome: "Concentração",
-    dataInicio: "2023-03-15",
-    horaInicio: "20:30",
-    dataFim: "2023-03-15",
-    horaFim: "00:00",
-    trabalho: 1,
-    farda: "azul",
-    hinario: "Oração + Concentração + Hinos novos",
-    lista: [{ idUsuario: 1, funcao: 1 }],
-    observacao: "",
-  },
-  {
-    id: 2,
-    nome: "São José",
-    dataInicio: "2023-04-05",
-    horaInicio: "10:30",
-    dataFim: "2023-03-19",
-    horaFim: "22:00",
-    farda: "branca",
-    hinario: "O Cruzeirinho, Padrinho Alfredo",
-    trabalho: 1,
-    lista: [{ idUsuario: 1, funcao: 1 }],
-    observacao: "",
-  },
-  {
-    id: 3,
-    nome: "Concentração",
-    dataInicio: "2023-04-30",
-    horaInicio: "20:30",
-    dataFim: "2023-04-30",
-    horaFim: "00:00",
-    farda: "azul",
-    hinario: "Oração + Concentração + Hinos novos",
-    trabalho: 1,
-    lista: [{ idUsuario: 1, funcao: 1 }],
-    observacao: "",
-  },
-]; */
-
 const getTrabalhos = async () => {
-  const { data } = await api.get("http://localhost:3000/api/trabalhos");
+  const { data } = await api.get("/api/trabalhos");
   const { trabalhos } = await data;
   return trabalhos;
 };
