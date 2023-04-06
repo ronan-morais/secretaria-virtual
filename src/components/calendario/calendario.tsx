@@ -42,13 +42,19 @@ export interface trabalhosProps {
 
 export function Calendario({ trabalhos }: trabalhosProps) {
   const hoje = useCalendarioStore((state: any) => state.hoje);
-  const diaSelecionado = useCalendarioStore((state: any) => state.diaSelecionado);
-  const setDiaSelecionado = useCalendarioStore((state: any) => state.setDiaSelecionado);
+  const diaSelecionado = useCalendarioStore(
+    (state: any) => state.diaSelecionado
+  );
+  const setDiaSelecionado = useCalendarioStore(
+    (state: any) => state.setDiaSelecionado
+  );
   const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
   const setMesAtual = useCalendarioStore((state: any) => state.setMesAtual);
   const index = useCalendarioStore((state: any) => state.index);
   const setIndex = useCalendarioStore((state: any) => state.setIndex);
-  const primeiroDiaMesAtual = useCalendarioStore((state: any) => state.primeiroDiaMesAtual);
+  const primeiroDiaMesAtual = useCalendarioStore(
+    (state: any) => state.primeiroDiaMesAtual
+  );
 
   const dias = eachDayOfInterval({
     start: primeiroDiaMesAtual(),
@@ -124,7 +130,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
         {dias.map((dia, indexDia) => {
           return (
             <div
-              key={ indexDia/* dia.toString() */}
+              key={indexDia /* dia.toString() */}
               className={classNames(
                 indexDia === 0 && colStartClasses[getDay(dia)],
                 "py-1.5"

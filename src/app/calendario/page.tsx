@@ -10,6 +10,7 @@ const getTrabalhos = async () => {
 };
 
 export default async function Calendario() {
+  
   const trabalhos = await getTrabalhos();
 
   return (
