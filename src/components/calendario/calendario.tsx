@@ -141,7 +141,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
                 onClick={() => {
                   setDiaSelecionado(dia);
                   setIndex(0);
-                  trabalhos.some(evento => {
+                  trabalhos && trabalhos.some(evento => {
                     if (isSameDay(dia, parseISO(evento.dataInicio))) {
                       setIndex(evento.trabalhoId);
                     }

@@ -39,23 +39,26 @@ export function Lista({ trabalhos }: ListaProps) {
   const hoje = useCalendarioStore((state: any) => state.hoje);
   const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
 
-  const filterEventos = trabalhos.filter(
-    (evento: any) =>
-      format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
-  );
+  const filterEventos =
+    trabalhos &&
+    trabalhos.filter(
+      (evento: any) =>
+        format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
+    );
 
   if (filterEventos.length > 0) {
     return (
       <div className="flex flex-col w-full">
-        {trabalhos.map((trabalho: any, key: number) => {
-          if (format(parseISO(trabalho.dataInicio), "MMM-yyyy") == mesAtual) {
-            return (
-              <>
-                <Item key={key} trabalho={trabalho} hoje={hoje} />
-              </>
-            );
-          }
-        })}
+        {trabalhos &&
+          trabalhos.map((trabalho: any, key: number) => {
+            if (format(parseISO(trabalho.dataInicio), "MMM-yyyy") == mesAtual) {
+              return (
+                <>
+                  <Item key={key} trabalho={trabalho} hoje={hoje} />
+                </>
+              );
+            }
+          })}
       </div>
     );
   } else {
