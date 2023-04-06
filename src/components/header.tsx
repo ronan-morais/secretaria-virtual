@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Drawer } from "./drawer";
 import { HiMenuAlt2 } from "react-icons/hi";
+import Link from "next/link";
 
 export function Header() {
   return (
@@ -24,7 +25,7 @@ export function Header() {
           Secretaria Virtual
         </h2>
         <h1 className="text-sm sm:text-lg lg:text-xl font-black tracking-normal text-begeEscuro leading-4">
-          Flor de Jagube
+          <Link href="/">Flor de Jagube</Link>
         </h1>
       </div>
       <div className="">
