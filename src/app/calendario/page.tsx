@@ -1,6 +1,7 @@
 import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
 import api from "@/utils/axios";
+import { Suspense } from "react";
 
 const getTrabalhos = async () => {
   const { data } = await api.get(`/api/trabalhos`);
@@ -17,10 +18,14 @@ export default async function Calendario() {
         <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-6xl md:px-6">
           <div className="flex flex-col pb-16 md:flex-row md:divide-x md:divide-gray-300">
             <div className="md:pr-14 w-full md:w-[40%] lg:w-1/3">
-              <Calendar trabalhos={trabalhos} />
+              <Suspense fallback={<p>Loading Calendar...</p>}>
+                <Calendar trabalhos={trabalhos} />
+              </Suspense>
             </div>
             <div className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14">
-              <Lista trabalhos={trabalhos} />
+              <Suspense fallback={<p>Loading List...</p>}>
+                <Lista trabalhos={trabalhos} />
+              </Suspense>
             </div>
           </div>
         </div>
