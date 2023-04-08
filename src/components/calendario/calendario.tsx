@@ -16,31 +16,13 @@ import { ptBR } from "date-fns/locale";
 import { useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { useCalendarioStore } from "store";
+import { trabalhosProps } from "@/app/calendario/page";
 
 export const classNames = (...classes: any[]) => {
   return classes.filter(Boolean).join(" ");
 };
 
-export interface trabalhosProps {
-  trabalhos: {
-    trabalhoId: number;
-    nome: string;
-    dataInicio: string;
-    horaInicio: string;
-    dataFim: string;
-    horaFim: string;
-    trabalho: number;
-    farda: string;
-    hinario: string;
-    lista: {
-      idUsuario: number;
-      funcao: number;
-    }[];
-    observacao: string;
-  }[];
-}
-
-export function Calendario({ trabalhos }: trabalhosProps) {
+export function Calendario({ trabalhos }: any) {
   const hoje = useCalendarioStore((state: any) => state.hoje);
   const diaSelecionado = useCalendarioStore(
     (state: any) => state.diaSelecionado
@@ -48,9 +30,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
   const setDiaSelecionado = useCalendarioStore(
     (state: any) => state.setDiaSelecionado
   );
-  const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
   const setMesAtual = useCalendarioStore((state: any) => state.setMesAtual);
-  const index = useCalendarioStore((state: any) => state.index);
   const setIndex = useCalendarioStore((state: any) => state.setIndex);
   const primeiroDiaMesAtual = useCalendarioStore(
     (state: any) => state.primeiroDiaMesAtual
@@ -70,7 +50,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
     setMesAtual(format(new Date(), "MMM-yyyy"));
     setDiaSelecionado(hoje);
     setIndex(0);
-    const data: any = trabalhos.find(evento =>
+    const data: any = trabalhos.find((evento: any) =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
     data && setIndex(data.trabalhoId);
@@ -82,7 +62,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
   }
 
   useEffect(() => {
-    const data = trabalhos.find(evento =>
+    const data = trabalhos.find((evento: any) =>
       isSameDay(hoje, parseISO(evento.dataInicio))
     );
     data ? setIndex(data.trabalhoId) : setIndex(0);
@@ -141,11 +121,12 @@ export function Calendario({ trabalhos }: trabalhosProps) {
                 onClick={() => {
                   setDiaSelecionado(dia);
                   setIndex(0);
-                  trabalhos && trabalhos.some(evento => {
-                    if (isSameDay(dia, parseISO(evento.dataInicio))) {
-                      setIndex(evento.trabalhoId);
-                    }
-                  });
+                  trabalhos &&
+                    trabalhos.some((evento: any) => {
+                      if (isSameDay(dia, parseISO(evento.dataInicio))) {
+                        setIndex(evento.trabalhoId);
+                      }
+                    });
                 }}
                 className={classNames(
                   isEqual(dia, diaSelecionado) && "text-white",
@@ -169,7 +150,7 @@ export function Calendario({ trabalhos }: trabalhosProps) {
                   !isEqual(dia, diaSelecionado) && "hover:bg-white",
                   (isEqual(dia, diaSelecionado) || isToday(dia)) &&
                     "font-semibold",
-                  trabalhos.some(evento =>
+                  trabalhos.some((evento: any) =>
                     isSameDay(parseISO(evento.dataInicio), dia)
                   ) && "ring ring-begeMedio",
                   "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-bgMedio transition-all"

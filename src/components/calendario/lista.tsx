@@ -11,31 +11,13 @@ import {
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
 import { useCalendarioStore } from "store";
+import { trabalhosProps } from "@/app/calendario/page";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-interface ListaProps {
-  trabalhos: {
-    trabalhoId: number;
-    nome: string;
-    dataInicio: string;
-    horaInicio: string;
-    dataFim: string;
-    horaFim: string;
-    trabalho: number;
-    farda: string;
-    hinario: string;
-    lista: {
-      idUsuario: number;
-      funcao: number;
-    }[];
-    observacao: string;
-  }[];
-}
-
-export function Lista({ trabalhos }: ListaProps) {
+export function Lista({ trabalhos }: any) {
   const hoje = useCalendarioStore((state: any) => state.hoje);
   const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
 
@@ -71,22 +53,7 @@ export function Lista({ trabalhos }: ListaProps) {
 }
 
 interface ItemProps {
-  trabalho: {
-    trabalhoId: number;
-    nome: string;
-    dataInicio: string;
-    horaInicio: string;
-    dataFim: string;
-    horaFim: string;
-    trabalho: number;
-    farda: string;
-    hinario: string;
-    lista: {
-      idUsuario: number;
-      funcao: number;
-    }[];
-    observacao: string;
-  };
+  trabalho: any;
   hoje: Date;
 }
 
