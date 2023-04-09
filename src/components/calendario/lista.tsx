@@ -61,16 +61,13 @@ function Item({ trabalho, hoje }: ItemProps) {
   const [parent] = useAutoAnimate();
   const index = useCalendarioStore((state: any) => state.index);
   const setIndex = useCalendarioStore((state: any) => state.setIndex);
-  const setDiaSelecionado = useCalendarioStore(
-    (state: any) => state.setDiaSelecionado
-  );
+  const setDiaSelecionado = useCalendarioStore((state: any) => state.setDiaSelecionado);
   const antes = isBefore(parseISO(trabalho.dataInicio), hoje);
   const depois = isAfter(parseISO(trabalho.dataInicio), hoje);
   const mesmoDia = isSameDay(parseISO(trabalho.dataInicio), hoje);
 
   const handleSetIndex = (id: number) => {
     index !== id && setIndex(id);
-    console.log("xxx", id);
   };
 
   return (
@@ -87,7 +84,6 @@ function Item({ trabalho, hoje }: ItemProps) {
           onClick={() => {
             handleSetIndex(trabalho.trabalhoId);
             setDiaSelecionado(parseISO(trabalho.dataInicio));
-            window.scrollBy(0, window.innerHeight);
           }}
           className="font-bold text-md lg:text-xl tracking-tight cursor-pointer"
         >

@@ -22,9 +22,8 @@ export interface trabalhosProps {
 [];
 
 export default async function Calendario() {
+  
   const trabalhos = await prisma.trabalhos.findMany();
-
-  console.log(trabalhos);
 
   return (
     <main className="w-full flex flex-col">

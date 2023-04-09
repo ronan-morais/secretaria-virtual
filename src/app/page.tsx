@@ -11,7 +11,6 @@ export default function Home() {
         <div className="w-full">
           <MessageBoard />
         </div>
-
         <div className="flex flex-col sm:flex-row gap-10">
           <div className="w-full">
             <Calendar />

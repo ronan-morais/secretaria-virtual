@@ -17,6 +17,7 @@ import { useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { useCalendarioStore } from "store";
 import { trabalhosProps } from "@/app/calendario/page";
+import { useSetIndex } from "@/utils/hooks";
 
 export const classNames = (...classes: any[]) => {
   return classes.filter(Boolean).join(" ");
@@ -30,6 +31,7 @@ export function Calendario({ trabalhos }: any) {
   const setDiaSelecionado = useCalendarioStore(
     (state: any) => state.setDiaSelecionado
   );
+  const mesAtual = useCalendarioStore((state: any) => state.mesAtual);
   const setMesAtual = useCalendarioStore((state: any) => state.setMesAtual);
   const setIndex = useCalendarioStore((state: any) => state.setIndex);
   const primeiroDiaMesAtual = useCalendarioStore(
@@ -86,7 +88,7 @@ export function Calendario({ trabalhos }: any) {
           onClick={mesHoje}
           className="py-3 text-sm text-begeEscuro font-bold"
         >
-          <span className="sr-only">Mês atual</span>
+          <span className="sr-only">Mês atual: {mesAtual}</span>
           Hoje
         </button>
         <button type="button" onClick={proximoMes} className="p-3">
