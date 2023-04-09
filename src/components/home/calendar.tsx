@@ -1,12 +1,11 @@
-import { prisma } from "@/db";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import Link from "next/link";
 import "swiper/swiper.min.css";
 import { format } from "date-fns";
 import pt from "date-fns/locale/pt";
+import { trabalhosProps } from "@/app/calendario/page";
 
-export async function Calendar() {
-  const trabalhos = await prisma.trabalhos.findMany();
+export function Calendar({ trabalhos }: any) {
   return (
     <section className="w-full pt-5 min-w-[25vw] md:pr-14">
       <Link href="/calendario">
@@ -16,7 +15,7 @@ export async function Calendar() {
         </h2>
       </Link>
       <ul className="mt-10">
-        {trabalhos.map((trabalho, key) => (
+        {trabalhos.map((trabalho: any, key: number) => (
           <li key={key} className="flex gap-3 mb-3">
             <div className="bg-white px-3 rounded-xl flex flex-col justify-center text-center shadow-sm">
               <span className="text-lg lg:text-2xl p-0 m-0 font-bold text-begeMedio tracking-tight">
