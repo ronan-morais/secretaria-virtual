@@ -43,7 +43,7 @@ export default async function Trabalho({ params }: any) {
       <div className="p-5">
         <div className="max-w-md px-4 mx-auto sm:px7 md:max-w-6xl md:px-6">
           <div className="flex flex-col pb-16 md:flex-row md:divide-x md:divide-gray-300">
-            <div className="flex flex-col text-begeEscuro md:pr-14 w-full md:w-[50%] lg:w-[40%]">
+            <div className="flex flex-col text-begeEscuro md:pr-14 w-full md:w-[40%]">
               <h2 className="flex flex-row gap-1 py-4 sm:py-6 text-lg lg:text-2xl font-sans font-light text-begeMedio">
                 <TbJewishStar className="w-6 h-6 lg:w-8 lg:h-8 text-begeMedio" />
                 Trabalho
@@ -99,31 +99,31 @@ export default async function Trabalho({ params }: any) {
                     <HiOutlineAnnotation className="w-6 h-6 lg:w-8 lg:h-8 text-begeMedio" />
                     Comunicados
                   </h2>
-                  <div className="text-xs md:text-sm lg:text-base text-begeMedio bg-white p-3 lg:p-5 rounded-lg">
+                  <div className="text-xs md:text-sm lg:text-base text-begeMedio bg-[rgba(255,255,255,0.6)] p-3 lg:p-5 rounded-lg">
                     <p className="italic">{trabalho?.observacao}</p>
                   </div>
                 </div>
               )}
             </div>
-            <div className="flex flex-col mt-12 w-full md:w-[50%] lg:w-[60%] md:mt-0 md:pl-14">
+            <div className="flex flex-col mt-12 w-full md:w-[60%] md:mt-0 md:pl-14">
               <div className="flex flex-row justify-between items-center">
                 <div>
                   <h2 className="flex flex-row gap-1 py-4 sm:py-6 text-lg lg:text-2xl font-sans font-light text-begeMedio">
                     <HiOutlineClipboardList className="w-6 h-6 lg:w-8 lg:h-8 text-begeMedio" />
-                    Lista de participantes
+                    Participantes
                   </h2>
                 </div>
                 <div>
                   <button
                     type="button"
-                    className="bg-[#7EB256] text-white py-1 px-3 rounded-xl text-sm font-bold flex flex-row items-center gap-1"
+                    className="bg-[#7EB256] text-white py-1 px-3 rounded-xl text-xs sm:text-sm font-bold flex flex-row items-center gap-1"
                   >
                     <HiOutlineCheckCircle className="w-5 h-5" />
                     Quero Participar
                   </button>
                 </div>
               </div>
-              <div className="flex flex-row gap-5 text-sm text-begeEscuro">
+              <div className="flex flex-row my-3 justify-between sm:justify-normal gap-5 text-xs sm:text-sm text-begeEscuro">
                 <div>
                   <b>Fardados:</b> 10/21
                 </div>
@@ -136,14 +136,17 @@ export default async function Trabalho({ params }: any) {
               </div>
               <div>
                 <ul className="my-4 text-begeEscuro">
-                  <li className="flex flex-row gap-3">
+                  <li className="flex flex-row gap-3 items-center bg-[rgba(255,255,255,0.6)] my-2 rounded-xl px-3">
                     <span>
                       <b>01</b>
                     </span>
-                    <span className="flex w-10 h-10 items-center relative">
-                      <Image className="rounded-full" src="https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="Jorge Luiz de Moura" fill />
+                    <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
+                    <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
+                      Jorge Luiz de Moura
                     </span>
-                    <span>Jorge Luiz de Moura</span>
+                    <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
+                      Comandante
+                    </span>
                   </li>
                 </ul>
               </div>
