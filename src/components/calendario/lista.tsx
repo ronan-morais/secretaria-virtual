@@ -6,6 +6,7 @@ import { ptBR } from "date-fns/locale";
 import {
   HiOutlineCalendar,
   HiOutlineClock,
+  HiOutlineBookOpen,
   HiOutlineInformationCircle,
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
@@ -124,8 +125,8 @@ function Item({ trabalho, hoje }: ItemProps) {
                 </div>
               </div>
             </div>
-            <div className="flex flex-row items-start gap-1">
-              <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
+            <div className="flex flex-row items-center gap-1">
+              <HiOutlineBookOpen className="w-5 h-5 text-begeMedio" />{" "}
               <span className="pt-1">
                 Hinário: <b>{trabalho.hinario}</b>
               </span>

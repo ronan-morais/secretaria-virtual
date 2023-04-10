@@ -3,7 +3,7 @@ import { format } from "date-fns";
 import pt from "date-fns/locale/pt";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { TbJewishStar, TbHanger } from "react-icons/tb";
-import { HiOutlineClock } from "react-icons/hi";
+import { HiOutlineClock, HiOutlineBookOpen } from "react-icons/hi";
 
 export interface trabalhosProps {
   trabalhoId: number;
@@ -76,7 +76,7 @@ export default async function Trabalho({ params }: any) {
                 </div>
                 <div className="flex flex-row items-center gap-1">
                   <div className="flex">
-                    <MdOutlineCalendarMonth className="w-4 h-4 lg:w-6 lg:h-6 fill-begeMedio" />
+                    <HiOutlineBookOpen className="w-4 h-4 lg:w-6 lg:h-6 text-begeMedio" />
                   </div>
                   <div className="flex gap-2">
                     <b>Hinário:</b> {trabalho?.hinario}
