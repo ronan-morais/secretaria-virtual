@@ -3,7 +3,7 @@ import Link from "next/link";
 import "swiper/swiper.min.css";
 import { format } from "date-fns";
 import pt from "date-fns/locale/pt";
-import { trabalhosProps } from "@/app/calendario/page";
+import { trabalhosProps } from "@/app/trabalho/[slug]/page";
 
 export function Calendar({ trabalhos }: any) {
   return (

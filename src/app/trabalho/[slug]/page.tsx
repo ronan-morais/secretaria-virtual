@@ -74,6 +74,14 @@ export default async function Trabalho({ params }: any) {
                     </div>
                   </div>
                 </div>
+                <div className="flex flex-row items-center gap-1">
+                  <div className="flex">
+                    <MdOutlineCalendarMonth className="w-4 h-4 lg:w-6 lg:h-6 fill-begeMedio" />
+                  </div>
+                  <div className="flex gap-2">
+                    <b>Hinário:</b> {trabalho?.hinario}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="mt-12 w-full md:w-[60%] lg:w-2/3 flex md:mt-0 md:pl-14"></div>
