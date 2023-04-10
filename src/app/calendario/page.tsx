@@ -3,24 +3,6 @@ import { Lista } from "@/components/calendario/lista";
 import { prisma } from "@/db";
 import { Suspense } from "react";
 
-export interface trabalhosProps {
-  trabalhoId: number;
-  nome: string;
-  dataInicio: Date;
-  horaInicio: string;
-  dataFim?: Date;
-  horaFim?: string;
-  trabalho?: number;
-  farda?: string;
-  hinario?: string;
-  lista?: {
-    idUsuario?: number;
-    funcao?: number;
-  }[];
-  observacao?: string;
-}
-[];
-
 export default async function Calendario() {
   
   const trabalhos = await prisma.trabalhos.findMany();

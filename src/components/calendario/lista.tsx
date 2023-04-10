@@ -3,7 +3,6 @@
 import { useAutoAnimate } from "@formkit/auto-animate/react";
 import { parseISO, format, isBefore, isAfter, isSameDay } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Dispatch, SetStateAction } from "react";
 import {
   HiOutlineCalendar,
   HiOutlineClock,
@@ -11,7 +10,8 @@ import {
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
 import { useCalendarioStore } from "store";
-import { trabalhosProps } from "@/app/calendario/page";
+import { trabalhosProps } from "@/app/trabalho/[slug]/page";
+import Link from "next/link";
 
 function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(" ");
@@ -61,7 +61,9 @@ function Item({ trabalho, hoje }: ItemProps) {
   const [parent] = useAutoAnimate();
   const index = useCalendarioStore((state: any) => state.index);
   const setIndex = useCalendarioStore((state: any) => state.setIndex);
-  const setDiaSelecionado = useCalendarioStore((state: any) => state.setDiaSelecionado);
+  const setDiaSelecionado = useCalendarioStore(
+    (state: any) => state.setDiaSelecionado
+  );
   const antes = isBefore(parseISO(trabalho.dataInicio), hoje);
   const depois = isAfter(parseISO(trabalho.dataInicio), hoje);
   const mesmoDia = isSameDay(parseISO(trabalho.dataInicio), hoje);
@@ -130,13 +132,13 @@ function Item({ trabalho, hoje }: ItemProps) {
             </div>
             <div className="pt-3 flex w-full md:justify-start gap-3">
               {(mesmoDia || depois) && (
-                <button
-                  type="button"
+                <Link
+                  href={`/trabalho/${trabalho.trabalhoId}`}
                   className="bg-dourado font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
                 >
                   <HiOutlineInformationCircle className="w-6 h-6" /> Mais
                   informações
-                </button>
+                </Link>
               )}
             </div>
           </div>

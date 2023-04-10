@@ -16,7 +16,7 @@ import { ptBR } from "date-fns/locale";
 import { useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
 import { useCalendarioStore } from "store";
-import { trabalhosProps } from "@/app/calendario/page";
+import { trabalhosProps } from "@/app/trabalho/[slug]/page";
 import { useSetIndex } from "@/utils/hooks";
 
 export const classNames = (...classes: any[]) => {
