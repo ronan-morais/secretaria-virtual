@@ -24,19 +24,39 @@ export interface trabalhosProps {
   farda?: string;
   hinario?: string;
   lista?: {
-    idUsuario?: number;
-    funcao?: number;
+    amigoId?: number;
+    funcaoId?: number;
   }[];
   observacao?: string;
 }
 [];
 
-export default async function Trabalho({ params }: any) {
-  const trabalho = await prisma.trabalhos.findUnique({
+async function getTrabalho(id: number) {
+  const data = await prisma.trabalhos.findUnique({
     where: {
-      trabalhoId: Number(params.slug),
+      trabalhoId: Number(id),
     },
   });
+  return data;
+}
+
+async function getParticipantes(ids: number[]) {
+  const data = await prisma.dadosUsuarios.findMany({
+    where: {
+      dadosUsuarioId: {
+        in: ids,
+      },
+    },
+  });
+  return data;
+}
+
+export default async function Trabalho({ params }: any) {
+  const funcoes = await prisma.funcoes.findMany();
+  const trabalho = await getTrabalho(params.slug);
+
+  const participantesId = trabalho?.lista && trabalho?.lista.map((id: any) => id.amigoId);
+  const participantes = await getParticipantes(participantesId);
 
   return (
     <main className="w-full flex flex-col">
@@ -52,7 +72,7 @@ export default async function Trabalho({ params }: any) {
                 <h1 className="flex flex-row text-lg sm:text-xl font-bold tracking-tigh mb-4">
                   {trabalho?.nome}
                 </h1>
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-2">
                   <div className="flex flex-row items-center gap-1">
                     <div className="flex">
                       <MdOutlineCalendarMonth className="w-4 h-4 lg:w-6 lg:h-6 fill-begeMedio" />
@@ -125,29 +145,44 @@ export default async function Trabalho({ params }: any) {
               </div>
               <div className="flex flex-row my-3 justify-between sm:justify-normal gap-5 text-xs sm:text-sm text-begeEscuro">
                 <div>
-                  <b>Fardados:</b> 10/21
+                  <b>Fardados:</b> -/-
                 </div>
                 <div>
-                  <b>Visitantes:</b> 5/3
+                  <b>Visitantes:</b> -/-
                 </div>
                 <div>
-                  <b>Total:</b> 15/24 (39)
+                  <b>Total:</b> -/- ({trabalho?.lista && trabalho?.lista.length}
+                  )
                 </div>
               </div>
               <div>
                 <ul className="my-4 text-begeEscuro">
-                  <li className="flex flex-row gap-3 items-center bg-[rgba(255,255,255,0.6)] my-2 rounded-xl px-3">
-                    <span>
-                      <b>01</b>
-                    </span>
-                    <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
-                    <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
-                      Jorge Luiz de Moura
-                    </span>
-                    <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
-                      Comandante
-                    </span>
-                  </li>
+                  <>
+                    {trabalho?.lista &&
+                      trabalho.lista.map(
+                        (participante: any, key: number) => {
+                          return (
+                            <li
+                              key={key}
+                              className="flex flex-row gap-3 items-center bg-[rgba(255,255,255,0.6)] my-2 rounded-xl px-3"
+                            >
+                              <span>
+                                <b className="px-0 sm:px-2">{key + 1}</b>
+                              </span>
+                              <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
+                              <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
+                                { participantes.find(item => item.dadosUsuarioId === participante.amigoId)?.nome }
+                              </span>
+                              <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
+                                {
+                                  funcoes.find( funcao => funcao.funcaoId === participante.funcaoId )?.funcao
+                                }
+                              </span>
+                            </li>
+                          );
+                        }
+                      )}
+                  </>
                 </ul>
               </div>
             </div>

@@ -3,9 +3,9 @@ generator client {
 }
 
 datasource db {
-  provider          = "mysql"
-  url               = env("MYSQL_URL")
-  relationMode      = "prisma"
+  provider     = "mysql"
+  url          = env("MYSQL_URL")
+  relationMode = "prisma"
 }
 
 model Usuarios {
@@ -18,21 +18,19 @@ model Usuarios {
   email       String?  @unique
   senha       String
   avatar      String?
-
-  amigo  Amigos? @relation(fields: [amigoId], references: [amigoId])
-  perfil Perfis? @relation(fields: [perfilId], references: [perfilId])
+  amigo       Amigos?  @relation(fields: [amigoId], references: [amigoId])
+  perfil      Perfis?  @relation(fields: [perfilId], references: [perfilId])
 }
 
 model Amigos {
-  amigoId        Int      @id @unique @default(autoincrement())
-  dadosUsuarioId Int?     @unique
-  anamneseId     Int?     @unique
-  dataCriacao    DateTime @default(now())
-  dataUpdate     DateTime @updatedAt
-
-  usuario      Usuarios?
-  dadosUsuario DadosUsuarios? @relation(fields: [dadosUsuarioId], references: [dadosUsuarioId])
-  anamnese     Anamneses?     @relation(fields: [anamneseId], references: [anamneseId])
+  amigoId        Int            @id @unique @default(autoincrement())
+  dadosUsuarioId Int?           @unique
+  anamneseId     Int?           @unique
+  dataCriacao    DateTime       @default(now())
+  dataUpdate     DateTime       @updatedAt
+  usuario        Usuarios?
+  dadosUsuario   DadosUsuarios? @relation(fields: [dadosUsuarioId], references: [dadosUsuarioId])
+  anamnese       Anamneses?     @relation(fields: [anamneseId], references: [anamneseId])
 }
 
 model DadosUsuarios {
@@ -41,7 +39,6 @@ model DadosUsuarios {
   dataUpdate        DateTime  @updatedAt
   genero            String?
   nome              String
-  sobrenome         String?
   apelido           String?
   cpf               String?   @unique
   telefone          String?
@@ -56,8 +53,7 @@ model DadosUsuarios {
   estadoCivil       String?
   escolaridade      String?
   observacao        String?
-
-  amigo Amigos?
+  amigo             Amigos?
 }
 
 model Anamneses {
@@ -82,19 +78,22 @@ model Anamneses {
   primeiroTrabalho    String?
   anexo               String?
   observacao          String?
-
-  amigo Amigos?
+  amigo               Amigos?
 }
 
 model Perfis {
-  perfilId Int    @id @unique @default(autoincrement())
+  perfilId Int       @id @unique @default(autoincrement())
   perfil   String
+  usuario  Usuarios?
+}
 
-  usuario Usuarios?
+model Funcoes {
+  funcaoId Int    @id @unique @default(autoincrement())
+  funcao   String
 }
 
 model Trabalhos {
-  trabalhoId Int      @id @unique @default(autoincrement())
+  trabalhoId Int       @id @unique @default(autoincrement())
   nome       String
   dataInicio DateTime
   horaInicio String
@@ -103,6 +102,6 @@ model Trabalhos {
   trabalho   Int?
   farda      String?
   hinario    String?
-  lista      Json?
+  lista      Json      @default("[]")
   observacao String?
 }
