@@ -52,7 +52,7 @@ async function getParticipantes(ids: number[]) {
 }
 
 export default async function Trabalho({ params }: any) {
-  //const funcoes = await prisma.funcoes.findMany();
+  const funcoes = await prisma.funcoes.findMany();
   const trabalho = await getTrabalho(params.slug);
 
   console.log(trabalho?.lista)
@@ -177,7 +177,7 @@ export default async function Trabalho({ params }: any) {
                               </span>
                               <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
                                 {
-                                  funcoes.find( funcao => funcao.funcaoId === participante.funcaoId )?.funcao
+                                  funcoes.find( (funcao:any) => funcao.funcaoId === participante.funcaoId )?.funcao
                                 }
                               </span>
                             </li>
