@@ -52,8 +52,10 @@ async function getParticipantes(ids: number[]) {
 }
 
 export default async function Trabalho({ params }: any) {
-  const funcoes = await prisma.funcoes.findMany();
+  //const funcoes = await prisma.funcoes.findMany();
   const trabalho = await getTrabalho(params.slug);
+
+  console.log(trabalho?.lista)
 
   const participantesId = trabalho?.lista && trabalho?.lista.map((id: any) => id.amigoId);
   const participantes = await getParticipantes(participantesId);
