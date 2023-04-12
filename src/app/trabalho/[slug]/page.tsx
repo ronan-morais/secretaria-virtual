@@ -55,10 +55,17 @@ export default async function Trabalho({ params }: any) {
   //const funcoes = await prisma.funcoes.findMany();
   const trabalho = await getTrabalho(params.slug);
 
-  console.log(trabalho?.lista)
+  const participantesId = (): number[] => {
+    let array: number[] = [];
+    if (Array.isArray(trabalho?.lista)) {
+      trabalho?.lista.map((item: any) => {
+        array = [...array, item?.amigoId];
+      });
+    }
+    return array;
+  };
 
-  const participantesId = trabalho?.lista && trabalho?.lista.map((id: any) => id.amigoId);
-  const participantes = await getParticipantes(participantesId);
+  const participantes = await getParticipantes(participantesId());
 
   return (
     <main className="w-full flex flex-col">
@@ -153,37 +160,40 @@ export default async function Trabalho({ params }: any) {
                   <b>Visitantes:</b> -/-
                 </div>
                 <div>
-                  <b>Total:</b> -/- ({trabalho?.lista && trabalho?.lista.length}
-                  )
+                  <b>Total:</b> -/- (
+                  {Array.isArray(trabalho?.lista) && trabalho?.lista.length})
                 </div>
               </div>
               <div>
                 <ul className="my-4 text-begeEscuro">
                   <>
-                    {trabalho?.lista &&
-                      trabalho.lista.map(
-                        (participante: any, key: number) => {
-                          return (
-                            <li
-                              key={key}
-                              className="flex flex-row gap-3 items-center bg-[rgba(255,255,255,0.6)] my-2 rounded-xl px-3"
-                            >
-                              <span>
-                                <b className="px-0 sm:px-2">{key + 1}</b>
-                              </span>
-                              <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
-                              <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
-                                { participantes.find(item => item.dadosUsuarioId === participante.amigoId)?.nome }
-                              </span>
-                              <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
-                                {
-                                  //funcoes.find( (funcao:any) => funcao.funcaoId === participante.funcaoId )?.funcao
-                                }
-                              </span>
-                            </li>
-                          );
-                        }
-                      )}
+                    {Array.isArray(trabalho?.lista) &&
+                      trabalho?.lista.map((participante: any, key: number) => {
+                        return (
+                          <li
+                            key={key}
+                            className="flex flex-row gap-3 items-center bg-[rgba(255,255,255,0.6)] my-2 rounded-xl px-3"
+                          >
+                            <span>
+                              <b className="px-0 sm:px-2">{key + 1}</b>
+                            </span>
+                            <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
+                            <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
+                              {
+                                participantes.find(
+                                  item =>
+                                    item.dadosUsuarioId === participante.amigoId
+                                )?.nome
+                              }
+                            </span>
+                            <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
+                              {
+                                //funcoes.find( (funcao:any) => funcao.funcaoId === participante.funcaoId )?.funcao
+                              }
+                            </span>
+                          </li>
+                        );
+                      })}
                   </>
                 </ul>
               </div>
