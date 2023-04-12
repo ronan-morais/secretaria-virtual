@@ -51,8 +51,13 @@ async function getParticipantes(ids: number[]) {
   return data;
 }
 
+async function getFuncoes() {
+  const data = await prisma.funcoes.findMany();
+  return data;
+}
+
 export default async function Trabalho({ params }: any) {
-  const funcoes = await prisma.funcoes.findMany();
+  const funcoes = await getFuncoes();
   const trabalho = await getTrabalho(params.slug);
 
   const participantesId = (): number[] => {
