@@ -185,10 +185,10 @@ export default async function Trabalho({ params }: any) {
                             <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
                             <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
                               {
-                                /* participantes.find(
+                                participantes.find(
                                   item =>
                                     item.dadosUsuarioId === participante.amigoId
-                                )?.nome */
+                                )?.nome
                               }
                             </span>
                             <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
