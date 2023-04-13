@@ -68,9 +68,9 @@ export default async function Trabalho({ params }: any) {
       });
     }
     return array;
-  };
+  };*/
 
-  const participantes = await getParticipantes(participantesId()); */
+  const participantes = await getParticipantes([1]/* participantesId() */);
 
   return (
     <main className="w-full flex flex-col">
