@@ -1,5 +1,5 @@
 import { prisma } from "@/db";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import pt from "date-fns/locale/pt";
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import { TbJewishStar, TbHanger } from "react-icons/tb";
@@ -32,15 +32,14 @@ export interface trabalhosProps {
 [];
 
 async function getTrabalho(id: number) {
-  const data = await prisma.trabalhos.findUnique({
-    where: {
-      trabalhoId: Number(id),
-    },
-  });
+  const res = await fetch(
+    `https://x8ki-letl-twmt.n7.xano.io/api:xovdXjUB/trabalhos/${id}`
+  );
+  const data = await res.json();
   return data;
 }
 
-async function getParticipantes(ids: number[]) {
+/* async function getParticipantes(ids: number[]) {
   const data = await prisma.dadosUsuarios.findMany({
     where: {
       dadosUsuarioId: {
@@ -54,10 +53,10 @@ async function getParticipantes(ids: number[]) {
 async function getFuncoes() {
   const data = await prisma.perfis.findMany();
   return data;
-}
+} */
 
 export default async function Trabalho({ params }: any) {
-  const perfis = await getFuncoes();
+  //const perfis = await getFuncoes();
   const trabalho = await getTrabalho(params.slug);
 
   /* const participantesId = (): number[] => {
@@ -70,7 +69,7 @@ export default async function Trabalho({ params }: any) {
     return array;
   };*/
 
-  const participantes = await getParticipantes([1]/* participantesId() */);
+  //const participantes = await getParticipantes([1] /* participantesId() */);
 
   return (
     <main className="w-full flex flex-col">
@@ -94,9 +93,13 @@ export default async function Trabalho({ params }: any) {
                     <div className="flex gap-2 text-xs sm:text-sm lg:text-base">
                       <b>Data:</b>{" "}
                       {trabalho?.dataInicio &&
-                        format(trabalho?.dataInicio, "dd 'de' MMMM 'de' yyyy", {
-                          locale: pt,
-                        })}
+                        format(
+                          parseISO(trabalho?.dataInicio),
+                          "dd 'de' MMMM 'de' yyyy",
+                          {
+                            locale: pt,
+                          }
+                        )}
                     </div>
                   </div>
                   <div className="flex flex-row gap-3">
@@ -184,17 +187,16 @@ export default async function Trabalho({ params }: any) {
                             </span>
                             <span className="flex w-12 h-12 bg-cover bg-center rounded-full bg-[url(https://images.unsplash.com/photo-1463453091185-61582044d556?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80)]"></span>
                             <span className="flex flex-grow text-xs sm:text-sm lg:text-base">
-                              {
-                                participantes.find(
+                              {/* participantes.find(
                                   item =>
                                     item.dadosUsuarioId === participante.amigoId
-                                )?.nome
-                              }
+                                )?.nome */}
                             </span>
                             <span className="bg-[#89B7C1] text-white text-xs p-1 px-2 rounded-xl font-bold">
-                              {
-                                perfis.find( (perfil:any) => perfil.perfilId === participante.amigoId )?.perfil
-                              }
+                              {/* perfis.find(
+                                  (perfil: any) =>
+                                    perfil.perfilId === participante.amigoId
+                                )?.perfil */}
                             </span>
                           </li>
                         );

@@ -1,9 +1,8 @@
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import Link from "next/link";
 import "swiper/swiper.min.css";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 import pt from "date-fns/locale/pt";
-import { trabalhosProps } from "@/app/trabalho/[slug]/page";
 
 export function Calendar({ trabalhos }: any) {
   return (
@@ -20,12 +19,12 @@ export function Calendar({ trabalhos }: any) {
             <div className="bg-white px-3 rounded-xl flex flex-col justify-center text-center shadow-sm">
               <span className="text-lg lg:text-2xl p-0 m-0 font-bold text-begeMedio tracking-tight">
                 <Link href={`trabalho/${trabalho.trabalhoId}`}>
-                  {format(trabalho.dataInicio, "dd")}
+                  {format(parseISO(trabalho.dataInicio), "dd")}
                 </Link>
               </span>
               <span className="text-ellipsis text-begeEscuro text-xs lg:text-base p-0 -mt-1">
                 <Link href={`trabalho/${trabalho.trabalhoId}`}>
-                  {format(trabalho.dataInicio, "MMM", { locale: pt })}
+                  {format(parseISO(trabalho.dataInicio), "MMM", { locale: pt })}
                 </Link>
               </span>
             </div>
@@ -36,7 +35,7 @@ export function Calendar({ trabalhos }: any) {
                 </Link>
               </span>
               <span className="text-xs lg:text-sm">
-                {format(trabalho.dataInicio, "EEEE", { locale: pt })},{" "}
+                {format(parseISO(trabalho.dataInicio), "EEEE", { locale: pt })},{" "}
                 {trabalho.horaInicio}, {trabalho.farda}
               </span>
               <span className="text-xs lg:text-sm">

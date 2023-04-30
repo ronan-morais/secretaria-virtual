@@ -4,8 +4,17 @@ import { Calendar } from "@/components/home/calendar";
 import { Featuring } from "@/components/home/featuring";
 import { MessageBoard } from "@/components/home/messageBoard";
 
+async function getTrabalhos() {
+  const res = await fetch(
+    "https://x8ki-letl-twmt.n7.xano.io/api:xovdXjUB/trabalhos"
+  );
+  const data = await res.json();
+  return data;
+}
+
 export default async function Home() {
-  const trabalhos = await prisma.trabalhos.findMany();
+  const trabalhos = await getTrabalhos();
+
   return (
     <main className="w-full flex flex-col">
       <Featuring />
