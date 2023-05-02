@@ -1,0 +1,12 @@
+{
+  "id": "mig_ch7b064ald364lqgm950",
+  "parentID": "mig_ch7aqjp3vni07384spfg",
+  "checksum": "1:ab530ecd3f1b8dbcedca04ea351d0b5123d96fd2fe811929190b2d2f6eb50f2a",
+  "operations": [
+    {
+      "addTable": {
+        "table": "amigos"
+      }
+    }
+  ]
+}

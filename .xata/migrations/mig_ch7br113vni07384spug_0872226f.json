@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7br113vni07384spug",
+  "parentID": "mig_ch7bqqhibk6tjssgshi0",
+  "checksum": "1:0872226ff24d248e7d836c47a5532d0a70df4fafbb33de5afd0fb05b2a568be2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "password",
+          "type": "string"
+        },
+        "table": "amigos"
+      }
+    }
+  ]
+}

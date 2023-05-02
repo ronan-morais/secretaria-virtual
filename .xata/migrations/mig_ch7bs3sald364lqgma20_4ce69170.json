@@ -1,0 +1,19 @@
+{
+  "id": "mig_ch7bs3sald364lqgma20",
+  "parentID": "mig_ch7brrcald364lqgma10",
+  "checksum": "1:4ce6917069e9033bd81482cc817fcbd8da39dc5bc2113bf07402b1969b1814f9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "trabalho",
+          "type": "link",
+          "link": {
+            "table": "trabalhos"
+          }
+        },
+        "table": "listas"
+      }
+    }
+  ]
+}

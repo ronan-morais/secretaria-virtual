@@ -1,0 +1,18 @@
+{
+  "id": "mig_ch7adshibk6tjssgsh6g",
+  "parentID": "mig_ch7adm13vni07384sp90",
+  "checksum": "1:0cfaa10970e9443971392612b321ee0110f9ce553ded48c74ac8774bc34b6bb6",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataInicio",
+          "type": "datetime",
+          "notNull": true,
+          "defaultValue": "now"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

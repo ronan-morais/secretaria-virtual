@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bemp3vni07384spog",
+  "parentID": "mig_ch7bej1ibk6tjssgshf0",
+  "checksum": "1:461cd633980bc4e7ee976dea538a5dc20ccef267bbbd6d31e177355b1b662c94",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "escolaridade",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

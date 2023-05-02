@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7aenpibk6tjssgsh7g",
+  "parentID": "mig_ch7aeksald364lqgm930",
+  "checksum": "1:27add84d43e4b11b059ca03265d6a982b25aa4057e95ecbf91240e2faee6a228",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "observacao",
+          "type": "text"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

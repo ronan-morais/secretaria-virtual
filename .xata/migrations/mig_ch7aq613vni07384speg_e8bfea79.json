@@ -1,0 +1,19 @@
+{
+  "id": "mig_ch7aq613vni07384speg",
+  "parentID": "mig_ch7apu13vni07384spdg",
+  "checksum": "1:e8bfea79304a3cd39caa5cc4c0199a9913309a9fcbb3b259e1877a11e5e58eeb",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "tipo",
+          "type": "link",
+          "link": {
+            "table": "tiposTrabalho"
+          }
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

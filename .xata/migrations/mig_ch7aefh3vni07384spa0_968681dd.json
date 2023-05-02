@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7aefh3vni07384spa0",
+  "parentID": "mig_ch7ae5kald364lqgm920",
+  "checksum": "1:968681dd8cb4efcee61ddeb3c99f21a09d04426ebd3b4da981302ea41a223258",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataFim",
+          "type": "datetime"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "id": "mig_ch7bsgkald364lqgma30",
+  "parentID": "mig_ch7bs3sald364lqgma20",
+  "checksum": "1:14ee1b2012fdf894dafcabb12ba8fb76fff0969217e9e979aeec2b95a00353fc",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "funcao",
+          "type": "link",
+          "link": {
+            "table": "funcoes"
+          }
+        },
+        "table": "listas"
+      }
+    }
+  ]
+}

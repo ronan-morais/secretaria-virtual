@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bej1ibk6tjssgshf0",
+  "parentID": "mig_ch7beeh3vni07384spng",
+  "checksum": "1:b42790e35828a5bcca33728f7ba922f4ecd75a776b7e5e6af94859bc866d0f47",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "estadoCivil",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

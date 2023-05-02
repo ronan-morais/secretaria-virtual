@@ -1,0 +1,19 @@
+{
+  "id": "mig_ch7bfq93vni07384spt0",
+  "parentID": "mig_ch7bffp3vni07384sps0",
+  "checksum": "1:48b31c42cb64ff16bf28327f187b37e126fbe31d116e040972313057dffac334",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dados",
+          "type": "link",
+          "link": {
+            "table": "dadosUsuarios"
+          }
+        },
+        "table": "amigos"
+      }
+    }
+  ]
+}

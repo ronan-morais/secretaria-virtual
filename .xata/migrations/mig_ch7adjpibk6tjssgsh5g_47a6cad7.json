@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7adjpibk6tjssgsh5g",
+  "parentID": "mig_ch7adbpibk6tjssgsh4g",
+  "checksum": "1:47a6cad7ef42d22fb168ad27d0f2e6a0b2f737d279750d064ca3a33a63f18b5f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "farda",
+          "type": "string"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bdu4ald364lqgm9c0",
+  "parentID": "mig_ch7bdokald364lqgm9b0",
+  "checksum": "1:9a0489dbc6cb2bd74e704a0f20d9fc13cf8a7f7fc68b92245eb4ef54ee237ecc",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "logradouro",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

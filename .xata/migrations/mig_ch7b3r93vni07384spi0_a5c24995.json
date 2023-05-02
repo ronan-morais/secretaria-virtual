@@ -1,0 +1,18 @@
+{
+  "id": "mig_ch7b3r93vni07384spi0",
+  "parentID": "mig_ch7b3i93vni07384sph0",
+  "checksum": "1:a5c24995cb2754f22bc4f2124bacee948a6b3d587d3022b302441cca15e27985",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataCriacao",
+          "type": "datetime",
+          "notNull": true,
+          "defaultValue": "now"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

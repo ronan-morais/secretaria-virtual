@@ -1,0 +1,13 @@
+{
+  "id": "mig_ch7bffp3vni07384sps0",
+  "parentID": "mig_ch7bfcsald364lqgm9g0",
+  "checksum": "1:6448864900c589b0fbd71f2526b3eb9b1d89239eda9c13016e2470504d0eb141",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "lista",
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7be5kald364lqgm9f0",
+  "parentID": "mig_ch7be3cald364lqgm9e0",
+  "checksum": "1:9b2f8cc0e6d8de1bfaebd5c79c89696c8229df9909033b3e92a6ddf61ef9d41a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "uf",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

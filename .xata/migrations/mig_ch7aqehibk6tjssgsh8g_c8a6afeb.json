@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7aqehibk6tjssgsh8g",
+  "parentID": "mig_ch7aq613vni07384speg",
+  "checksum": "1:c8a6afeb6d73614a4ecc6f0b8229984a89031e1298ff3b7fdccfa9770398d55a",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "descricao",
+          "type": "string"
+        },
+        "table": "tiposTrabalho"
+      }
+    }
+  ]
+}

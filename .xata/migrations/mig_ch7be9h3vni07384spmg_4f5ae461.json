@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7be9h3vni07384spmg",
+  "parentID": "mig_ch7be5kald364lqgm9f0",
+  "checksum": "1:4f5ae461126c62f5a9958cb4ca9cd7be50011394376ab9f2a1018777d4b91301",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "nacionalidade",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

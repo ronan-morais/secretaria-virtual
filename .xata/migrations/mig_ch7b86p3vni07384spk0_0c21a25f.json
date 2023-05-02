@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7b86p3vni07384spk0",
+  "parentID": "mig_ch7b7r13vni07384spj0",
+  "checksum": "1:0c21a25f82eeaf3bc291cb648a872a5b595894355e7c7676e4f6b1622247a105",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "genero",
+          "type": "multiple"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

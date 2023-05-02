@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7beeh3vni07384spng",
+  "parentID": "mig_ch7be9h3vni07384spmg",
+  "checksum": "1:6d4d2b1e537b347eeccf298858f9c227b655f6a8d6e5f66920a4cc7df7437486",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "contatoEmergencia",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

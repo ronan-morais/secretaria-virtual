@@ -1,0 +1,17 @@
+{
+  "id": "mig_ch7buj93vni07384spvg",
+  "parentID": "mig_ch7bsgkald364lqgma30",
+  "checksum": "1:22ac99207a294f3041c229382cae704ce8ffcf3db48323575c2b6458bbb65724",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "email",
+          "type": "email",
+          "unique": true
+        },
+        "table": "amigos"
+      }
+    }
+  ]
+}

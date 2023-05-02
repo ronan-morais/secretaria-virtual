@@ -1,0 +1,12 @@
+{
+  "id": "mig_ch7acopibk6tjssgsh3g",
+  "parentID": "mig_ch7acmp3vni07384sp80",
+  "checksum": "1:9f3f27955ff7049fcd2e86f5339e341e101e234b23a0d302e27a7fd56bcc82b9",
+  "operations": [
+    {
+      "addTable": {
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

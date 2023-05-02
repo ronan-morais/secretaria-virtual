@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7adm13vni07384sp90",
+  "parentID": "mig_ch7adjpibk6tjssgsh5g",
+  "checksum": "1:ac424e9102709b436da4bd50c4f699c2c822a0dff153290d0b710be410f56706",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "hinario",
+          "type": "string"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}
