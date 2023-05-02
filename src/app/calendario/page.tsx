@@ -1,12 +1,9 @@
 import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
-import { prisma } from "@/db";
 import { Suspense } from "react";
 
 export default async function Calendario() {
   
-  const trabalhos = await prisma.trabalhos.findMany();
-
   return (
     <main className="w-full flex flex-col">
       <pre>{}</pre>

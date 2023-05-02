@@ -1,19 +1,18 @@
-import { prisma } from "@/db";
 import { Birthdates } from "@/components/home/birthdates";
 import { Calendar } from "@/components/home/calendar";
 import { Featuring } from "@/components/home/featuring";
 import { MessageBoard } from "@/components/home/messageBoard";
+import { getXataClient } from "@/db/xata";
 
 async function getTrabalhos() {
-  const res = await fetch(
-    "https://x8ki-letl-twmt.n7.xano.io/api:xovdXjUB/trabalhos"
-  );
-  const data = await res.json();
-  return data;
+  const client = getXataClient();
+  const trabalhos = await client.db.trabalhos.getAll();
+  return trabalhos;
 }
 
 export default async function Home() {
   const trabalhos = await getTrabalhos();
+  console.log(trabalhos);
 
   return (
     <main className="w-full flex flex-col">

@@ -1,7 +1,7 @@
 import { MdOutlineCalendarMonth } from "react-icons/md";
 import Link from "next/link";
 import "swiper/swiper.min.css";
-import { format, parseISO } from "date-fns";
+import { format } from "date-fns";
 import pt from "date-fns/locale/pt";
 
 export function Calendar({ trabalhos }: any) {
@@ -18,24 +18,24 @@ export function Calendar({ trabalhos }: any) {
           <li key={key} className="flex gap-3 mb-3">
             <div className="bg-white px-3 rounded-xl flex flex-col justify-center text-center shadow-sm">
               <span className="text-lg lg:text-2xl p-0 m-0 font-bold text-begeMedio tracking-tight">
-                <Link href={`trabalho/${trabalho.trabalhoId}`}>
-                  {format(parseISO(trabalho.dataInicio), "dd")}
+                <Link href={`trabalho/${trabalho.id}`}>
+                  {format(trabalho.dataInicio, "dd")}
                 </Link>
               </span>
               <span className="text-ellipsis text-begeEscuro text-xs lg:text-base p-0 -mt-1">
-                <Link href={`trabalho/${trabalho.trabalhoId}`}>
-                  {format(parseISO(trabalho.dataInicio), "MMM", { locale: pt })}
+                <Link href={`trabalho/${trabalho.id}`}>
+                  {format(trabalho.dataInicio, "MMM", { locale: pt })}
                 </Link>
               </span>
             </div>
             <div className="text-sm lg:text-xl flex flex-col text-begeEscuro py-2">
               <span className="">
-                <Link href={`trabalho/${trabalho.trabalhoId}`}>
+                <Link href={`trabalho/${trabalho.id}`}>
                   <b>{trabalho.nome}</b>
                 </Link>
               </span>
               <span className="text-xs lg:text-sm">
-                {format(parseISO(trabalho.dataInicio), "EEEE", { locale: pt })},{" "}
+                {format(trabalho.dataInicio, "EEEE", { locale: pt })},{" "}
                 {trabalho.horaInicio}, {trabalho.farda}
               </span>
               <span className="text-xs lg:text-sm">
