@@ -1,9 +1,18 @@
 import { Calendario as Calendar } from "@/components/calendario/calendario";
 import { Lista } from "@/components/calendario/lista";
+import { getXataClient } from "@/db/xata";
 import { Suspense } from "react";
+
+async function getTrabalhos() {
+  const client = getXataClient();
+  const trabalhos = await client.db.trabalhos.getAll();
+  return trabalhos;
+}
 
 export default async function Calendario() {
   
+  const trabalhos = await getTrabalhos()
+
   return (
     <main className="w-full flex flex-col">
       <pre>{}</pre>

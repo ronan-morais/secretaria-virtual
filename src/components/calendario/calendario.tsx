@@ -15,9 +15,7 @@ import {
 import { ptBR } from "date-fns/locale";
 import { useEffect } from "react";
 import { HiChevronLeft, HiChevronRight } from "react-icons/hi";
-import { useCalendarioStore } from "store";
-import { trabalhosProps } from "@/app/trabalho/[slug]/page";
-import { useSetIndex } from "@/utils/hooks";
+import { useCalendarioStore } from "store";;
 
 export const classNames = (...classes: any[]) => {
   return classes.filter(Boolean).join(" ");
@@ -53,7 +51,7 @@ export function Calendario({ trabalhos }: any) {
     setDiaSelecionado(hoje);
     setIndex(0);
     const data: any = trabalhos.find((evento: any) =>
-      isSameDay(hoje, parseISO(evento.dataInicio))
+      isSameDay(hoje, evento.dataInicio)
     );
     data && setIndex(data.trabalhoId);
   }
@@ -65,7 +63,7 @@ export function Calendario({ trabalhos }: any) {
 
   useEffect(() => {
     const data = trabalhos.find((evento: any) =>
-      isSameDay(hoje, parseISO(evento.dataInicio))
+      isSameDay(hoje, evento.dataInicio)
     );
     data ? setIndex(data.trabalhoId) : setIndex(0);
   }, []);
@@ -125,7 +123,7 @@ export function Calendario({ trabalhos }: any) {
                   setIndex(0);
                   trabalhos &&
                     trabalhos.some((evento: any) => {
-                      if (isSameDay(dia, parseISO(evento.dataInicio))) {
+                      if (isSameDay(dia, evento.dataInicio)) {
                         setIndex(evento.trabalhoId);
                       }
                     });
@@ -153,7 +151,7 @@ export function Calendario({ trabalhos }: any) {
                   (isEqual(dia, diaSelecionado) || isToday(dia)) &&
                     "font-semibold",
                   trabalhos.some((evento: any) =>
-                    isSameDay(parseISO(evento.dataInicio), dia)
+                    isSameDay(evento.dataInicio, dia)
                   ) && "ring ring-begeMedio",
                   "mx-auto flex h-8 w-8 items-center justify-center rounded-full text-bgMedio transition-all"
                 )}

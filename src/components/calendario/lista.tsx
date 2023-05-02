@@ -11,7 +11,6 @@ import {
 } from "react-icons/hi";
 import { TbHanger } from "react-icons/tb";
 import { useCalendarioStore } from "store";
-import { trabalhosProps } from "@/app/trabalho/[slug]/page";
 import Link from "next/link";
 
 function classNames(...classes: any[]) {
@@ -26,7 +25,7 @@ export function Lista({ trabalhos }: any) {
     trabalhos &&
     trabalhos.filter(
       (evento: any) =>
-        format(parseISO(evento.dataInicio), "MMM-yyyy") === mesAtual
+        format(evento.dataInicio, "MMM-yyyy") === mesAtual
     );
 
   if (filterEventos.length > 0) {
@@ -34,7 +33,7 @@ export function Lista({ trabalhos }: any) {
       <div className="flex flex-col w-full">
         {trabalhos &&
           trabalhos.map((trabalho: any, key: number) => {
-            if (format(parseISO(trabalho.dataInicio), "MMM-yyyy") == mesAtual) {
+            if (format(trabalho.dataInicio, "MMM-yyyy") == mesAtual) {
               return (
                 <>
                   <Item key={key} trabalho={trabalho} hoje={hoje} />
@@ -65,9 +64,9 @@ function Item({ trabalho, hoje }: ItemProps) {
   const setDiaSelecionado = useCalendarioStore(
     (state: any) => state.setDiaSelecionado
   );
-  const antes = isBefore(parseISO(trabalho.dataInicio), hoje);
-  const depois = isAfter(parseISO(trabalho.dataInicio), hoje);
-  const mesmoDia = isSameDay(parseISO(trabalho.dataInicio), hoje);
+  const antes = isBefore(trabalho.dataInicio, hoje);
+  const depois = isAfter(trabalho.dataInicio, hoje);
+  const mesmoDia = isSameDay(trabalho.dataInicio, hoje);
 
   const handleSetIndex = (id: number) => {
     index !== id && setIndex(id);
@@ -86,7 +85,7 @@ function Item({ trabalho, hoje }: ItemProps) {
         <div
           onClick={() => {
             handleSetIndex(trabalho.trabalhoId);
-            setDiaSelecionado(parseISO(trabalho.dataInicio));
+            setDiaSelecionado(trabalho.dataInicio);
           }}
           className="font-bold text-md lg:text-xl tracking-tight cursor-pointer"
         >
@@ -99,7 +98,7 @@ function Item({ trabalho, hoje }: ItemProps) {
               )}
             >
               <HiOutlineCalendar className="w-5 h-5 text-begeMedio" />{" "}
-              {format(parseISO(trabalho.dataInicio), "dd/MM")}
+              {format(trabalho.dataInicio, "dd/MM")}
             </span>
           </div>
         </div>
@@ -109,7 +108,7 @@ function Item({ trabalho, hoje }: ItemProps) {
               <div className="flex flex-row gap-1 items-center">
                 <HiOutlineCalendar className="w-5 h-5 text-begeMedio" /> Data:{" "}
                 <b>
-                  {format(parseISO(trabalho.dataInicio), "iiii, d 'de' MMMM", {
+                  {format(trabalho.dataInicio, "iiii, d 'de' MMMM", {
                     locale: ptBR,
                   })}
                 </b>
