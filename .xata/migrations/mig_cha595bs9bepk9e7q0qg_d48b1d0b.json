@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha595bs9bepk9e7q0qg",
+  "parentID": "mig_cha591bs9bepk9e7q0pg",
+  "checksum": "1:d48b1d0ba1670a3ab5d0f1a6e273943c575c88f313b75ae86905b479f130b5f6",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "tratamentoPsi",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

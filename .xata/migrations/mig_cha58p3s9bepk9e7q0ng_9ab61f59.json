@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha58p3s9bepk9e7q0ng",
+  "parentID": "mig_cha58mv5jv1ark834580",
+  "checksum": "1:9ab61f591487fd3ff2dfa2f1beeeb20f7cefe4ae21178907f85957054265ea90",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "humor",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

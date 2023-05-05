@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha569o51p5s769555n0",
+  "parentID": "mig_cha5613s9bepk9e7q0jg",
+  "checksum": "1:bbfd376b016d8d68b2aba710d2e855b4fbdae569946de6ecbbec6ea077146bec",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "queixaClinica",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "id": "mig_cha5dmjs9bepk9e7q110",
+  "parentID": "mig_cha5bkjs9bepk9e7q0vg",
+  "checksum": "1:1eee226e8320e2036e522e7c34ba6d452435edafe70f1ec8d5d8de942ba80155",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "pcd",
+        "table": "anamneses"
+      }
+    }
+  ]
+}

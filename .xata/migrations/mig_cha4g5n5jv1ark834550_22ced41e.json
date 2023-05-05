@@ -1,0 +1,12 @@
+{
+  "id": "mig_cha4g5n5jv1ark834550",
+  "parentID": "mig_ch86obsald364lqgmcl0",
+  "checksum": "1:22ced41e75b69aa1d16f5b971ad6bef6e4575193bbfb240910ba35211ca176af",
+  "operations": [
+    {
+      "addTable": {
+        "table": "anamneses"
+      }
+    }
+  ]
+}

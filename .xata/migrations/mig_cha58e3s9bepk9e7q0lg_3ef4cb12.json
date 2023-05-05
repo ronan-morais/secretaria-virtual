@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha58e3s9bepk9e7q0lg",
+  "parentID": "mig_cha58abs9bepk9e7q0kg",
+  "checksum": "1:3ef4cb12b08bcd1dff0d2167f1fa7f1beefadf1bcb0a968806b8bc6d27cabc23",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "psicotropico",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

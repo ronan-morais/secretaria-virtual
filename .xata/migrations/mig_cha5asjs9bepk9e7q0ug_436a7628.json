@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5asjs9bepk9e7q0ug",
+  "parentID": "mig_cha5ano51p5s769555qg",
+  "checksum": "1:436a7628360ac2aaafa2d012e9100d4db46fc3a30b0d101cd70d1830cf31d6d2",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "anexo",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

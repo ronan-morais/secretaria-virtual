@@ -1,5 +1,5 @@
 {
-  "databaseURL": "https://secretaria-virtual-ll4gso.eu-west-1.xata.sh/db/secretaria-virtual/main",
+  "databaseURL": "https://secretaria-virtual-ll4gso.eu-west-1.xata.sh/db/secretaria-virtual",
   "codegen": {
     "output": "src/db/xata.ts"
   }

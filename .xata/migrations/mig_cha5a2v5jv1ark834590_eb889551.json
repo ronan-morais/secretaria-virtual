@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5a2v5jv1ark834590",
+  "parentID": "mig_cha5a0051p5s769555pg",
+  "checksum": "1:eb889551b754310b66cff6a9045afa22c2c1b7c317a8993412a86578025d2e4e",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "conhecidoFdj",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

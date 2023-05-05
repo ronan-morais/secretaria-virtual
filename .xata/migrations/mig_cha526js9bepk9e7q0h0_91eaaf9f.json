@@ -1,0 +1,17 @@
+{
+  "id": "mig_cha526js9bepk9e7q0h0",
+  "parentID": "mig_cha4g5n5jv1ark834550",
+  "checksum": "1:91eaaf9feb92b63ec0fd826f7c0724eddaf2c5a49b53583e01939412483af74d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataCriacao",
+          "type": "datetime",
+          "defaultValue": "now"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

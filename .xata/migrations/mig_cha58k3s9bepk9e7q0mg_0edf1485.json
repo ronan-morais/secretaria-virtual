@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha58k3s9bepk9e7q0mg",
+  "parentID": "mig_cha58e3s9bepk9e7q0lg",
+  "checksum": "1:0edf14853f0a76751f98b668a19b0e176b2d1a9426106cd86d8d7716161f08b3",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "internacao",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

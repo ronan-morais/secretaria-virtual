@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha58mv5jv1ark834580",
+  "parentID": "mig_cha58k3s9bepk9e7q0mg",
+  "checksum": "1:c733d2c2e8f0c7a8bb81deca7181f4eb308edc22d4cf1e53b479b8c095d5274d",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "doencaDiagnosticada",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

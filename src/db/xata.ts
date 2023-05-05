@@ -24,6 +24,8 @@ const tables = [
       { name: "horaFim", type: "string" },
       { name: "observacao", type: "text" },
       { name: "tipo", type: "link", link: { table: "tiposTrabalho" } },
+      { name: "dataCriacao", type: "datetime", defaultValue: "now" },
+      { name: "dataUpdate", type: "datetime", defaultValue: "now" },
     ],
   },
   {
@@ -43,6 +45,12 @@ const tables = [
       { name: "password", type: "string" },
       { name: "email", type: "email", unique: true },
       { name: "avatar", type: "string" },
+      {
+        name: "anamnese",
+        type: "link",
+        link: { table: "anamneses" },
+        unique: true,
+      },
     ],
   },
   {
@@ -82,6 +90,41 @@ const tables = [
       { name: "funcao", type: "link", link: { table: "funcoes" } },
     ],
   },
+  {
+    name: "anamneses",
+    columns: [
+      {
+        name: "dataCriacao",
+        type: "datetime",
+        notNull: true,
+        defaultValue: "now",
+      },
+      {
+        name: "dataUpdate",
+        type: "datetime",
+        notNull: true,
+        defaultValue: "now",
+      },
+      { name: "queixaClinica", type: "string" },
+      { name: "medicacaoContinua", type: "string" },
+      { name: "psicotropico", type: "string" },
+      { name: "internacao", type: "string" },
+      { name: "doencaDiagnosticada", type: "string" },
+      { name: "humor", type: "string" },
+      { name: "situacaoMental", type: "string" },
+      { name: "compulsao", type: "string" },
+      { name: "tratamentoPsi", type: "string" },
+      { name: "centrosReligiosos", type: "string" },
+      { name: "familiaReligiao", type: "string" },
+      { name: "familiaAprovacao", type: "string" },
+      { name: "comoSoube", type: "string" },
+      { name: "conhecidoFdj", type: "string" },
+      { name: "primeiroTrabalho", type: "string" },
+      { name: "anexo", type: "string" },
+      { name: "observacao", type: "string" },
+      { name: "pcd", type: "string" },
+    ],
+  },
 ] as const;
 
 export type SchemaTables = typeof tables;
@@ -105,6 +148,9 @@ export type FuncoesRecord = Funcoes & XataRecord;
 export type Listas = InferredTypes["listas"];
 export type ListasRecord = Listas & XataRecord;
 
+export type Anamneses = InferredTypes["anamneses"];
+export type AnamnesesRecord = Anamneses & XataRecord;
+
 export type DatabaseSchema = {
   trabalhos: TrabalhosRecord;
   tiposTrabalho: TiposTrabalhoRecord;
@@ -112,6 +158,7 @@ export type DatabaseSchema = {
   dadosUsuarios: DadosUsuariosRecord;
   funcoes: FuncoesRecord;
   listas: ListasRecord;
+  anamneses: AnamnesesRecord;
 };
 
 const DatabaseClient = buildClient();

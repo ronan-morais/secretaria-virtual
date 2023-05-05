@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5a0051p5s769555pg",
+  "parentID": "mig_cha59rrs9bepk9e7q0sg",
+  "checksum": "1:3b400f389025da6d2c0d253e945de245070fa651a07bdf56f086e205a68ebf1f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "comoSoube",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

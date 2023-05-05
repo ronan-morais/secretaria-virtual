@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha58abs9bepk9e7q0kg",
+  "parentID": "mig_cha569o51p5s769555n0",
+  "checksum": "1:2a5d1c896156af02ea4faddf4f26363f5d7c06be5f8b561610ddf8ff1a8bbc18",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "medicacaoContinua",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5993s9bepk9e7q0rg",
+  "parentID": "mig_cha595bs9bepk9e7q0qg",
+  "checksum": "1:62367e2f9ac6cc53048d607e7a0932bed012174c7451b97330732c900cc8e4e6",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "centrosReligiosos",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

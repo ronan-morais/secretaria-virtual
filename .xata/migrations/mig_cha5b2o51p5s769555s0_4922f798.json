@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5b2o51p5s769555s0",
+  "parentID": "mig_cha5asjs9bepk9e7q0ug",
+  "checksum": "1:4922f798329b279133cc562873229c2fc8f8c1796b9c9c20ed0c676ec9e63a0f",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "observacao",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}
