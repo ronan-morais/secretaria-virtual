@@ -1,9 +1,17 @@
 import "swiper/swiper.min.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useScreenSize } from "@/utils/hooks";
+import { getXataClient } from "@/db/xata";
+
+async function getTrabalhos() {
+  const client = getXataClient();
+  const trabalhos = await client.db.trabalhos.getAll();
+  return trabalhos;
+}
 
 export function Slider() {
   const screenSize = useScreenSize();
+  /* const trabalhos = await getTrabalhos(); */
 
   return (
     <Swiper

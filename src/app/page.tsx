@@ -12,7 +12,6 @@ async function getTrabalhos() {
 
 export default async function Home() {
   const trabalhos = await getTrabalhos();
-  console.log(trabalhos);
 
   return (
     <main className="w-full flex flex-col">

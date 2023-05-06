@@ -84,7 +84,7 @@ function Item({ trabalho, hoje }: ItemProps) {
       >
         <div
           onClick={() => {
-            handleSetIndex(trabalho.trabalhoId);
+            handleSetIndex(trabalho.id);
             setDiaSelecionado(trabalho.dataInicio);
           }}
           className="font-bold text-md lg:text-xl tracking-tight cursor-pointer"
@@ -93,7 +93,7 @@ function Item({ trabalho, hoje }: ItemProps) {
             {trabalho.nome}
             <span
               className={classNames(
-                index === trabalho.trabalhoId && "invisible",
+                index === trabalho.id && "invisible",
                 "font-normal text-sm ml-2 flex flex-row items-center gap-1"
               )}
             >
@@ -102,7 +102,7 @@ function Item({ trabalho, hoje }: ItemProps) {
             </span>
           </div>
         </div>
-        {index === trabalho.trabalhoId && (
+        {index === trabalho.id && (
           <div className="text-xs md:text-sm p-5 -mt-7 flex flex-col gap-2">
             <div className="flex flex-col lg:flex-row gap-2 lg:gap-5">
               <div className="flex flex-row gap-1 items-center">
@@ -133,7 +133,7 @@ function Item({ trabalho, hoje }: ItemProps) {
             <div className="pt-3 flex w-full md:justify-start gap-3">
               {(mesmoDia || depois) && (
                 <Link
-                  href={`/trabalho/${trabalho.trabalhoId}`}
+                  href={`/trabalho/${trabalho.id}`}
                   className="bg-dourado font-bold text-white p-3 py-2 rounded-lg w-full md:w-auto flex flex-row items-center justify-center gap-1"
                 >
                   <HiOutlineInformationCircle className="w-6 h-6" /> Mais

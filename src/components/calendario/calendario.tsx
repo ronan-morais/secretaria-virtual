@@ -53,7 +53,7 @@ export function Calendario({ trabalhos }: any) {
     const data: any = trabalhos.find((evento: any) =>
       isSameDay(hoje, evento.dataInicio)
     );
-    data && setIndex(data.trabalhoId);
+    data && setIndex(data.id);
   }
 
   function proximoMes() {
@@ -65,7 +65,7 @@ export function Calendario({ trabalhos }: any) {
     const data = trabalhos.find((evento: any) =>
       isSameDay(hoje, evento.dataInicio)
     );
-    data ? setIndex(data.trabalhoId) : setIndex(0);
+    data ? setIndex(data.id) : setIndex(0);
   }, []);
 
   return (
@@ -124,7 +124,7 @@ export function Calendario({ trabalhos }: any) {
                   trabalhos &&
                     trabalhos.some((evento: any) => {
                       if (isSameDay(dia, evento.dataInicio)) {
-                        setIndex(evento.trabalhoId);
+                        setIndex(evento.id);
                       }
                     });
                 }}
