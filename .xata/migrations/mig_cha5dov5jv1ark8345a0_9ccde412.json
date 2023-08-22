@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5dov5jv1ark8345a0",
+  "parentID": "mig_cha5dmjs9bepk9e7q110",
+  "checksum": "1:9ccde41298b4f7fef3adafee9edc4a6b563b2fb86ef72e178e71172eb6904962",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "pcd",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

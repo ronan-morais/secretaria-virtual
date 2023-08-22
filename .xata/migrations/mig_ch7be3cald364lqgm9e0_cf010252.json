@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7be3cald364lqgm9e0",
+  "parentID": "mig_ch7be0kald364lqgm9d0",
+  "checksum": "1:cf010252d41516f5f70629e3aa2d17e912a0e96999e503471f36a35d21f59160",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "cidade",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

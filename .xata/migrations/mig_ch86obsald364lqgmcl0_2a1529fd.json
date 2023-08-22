@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch86obsald364lqgmcl0",
+  "parentID": "mig_ch7buj93vni07384spvg",
+  "checksum": "1:2a1529fd58cfe822064ffd4d8647aa08ed41ef12d768dd54b6e23f92c8f1db67",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "avatar",
+          "type": "string"
+        },
+        "table": "amigos"
+      }
+    }
+  ]
+}

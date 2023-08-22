@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha59rrs9bepk9e7q0sg",
+  "parentID": "mig_cha59do51p5s769555o0",
+  "checksum": "1:8d0eab26aa5b2d909eb6c201133b708006cbc7f851014ae5d543a4cd4f373cb5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "familiaAprovacao",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

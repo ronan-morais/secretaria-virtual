@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7aeksald364lqgm930",
+  "parentID": "mig_ch7aefh3vni07384spa0",
+  "checksum": "1:28e395971a008d24ee1170b3c2b75e8a53d7e3fbbec59e4b404cbb78fcef62d4",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "horaFim",
+          "type": "string"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

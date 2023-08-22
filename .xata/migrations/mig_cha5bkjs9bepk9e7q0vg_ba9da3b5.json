@@ -1,0 +1,20 @@
+{
+  "id": "mig_cha5bkjs9bepk9e7q0vg",
+  "parentID": "mig_cha5b2o51p5s769555s0",
+  "checksum": "1:ba9da3b56c023993ea937041fa98907c3d47d5957e51b344b78048cd1e150103",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "anamnese",
+          "type": "link",
+          "link": {
+            "table": "anamneses"
+          },
+          "unique": true
+        },
+        "table": "amigos"
+      }
+    }
+  ]
+}

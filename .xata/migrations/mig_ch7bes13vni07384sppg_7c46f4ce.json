@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bes13vni07384sppg",
+  "parentID": "mig_ch7bemp3vni07384spog",
+  "checksum": "1:7c46f4ce74a6abc66c1e20629f2cc4fecb0e90390bc9b7620a590965990fffb7",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "observacao",
+          "type": "text"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

@@ -10,10 +10,14 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors:{
+      colors: {
         begeClaro: "#F2ECE8",
         begeMedio: "#C6ADA0",
-        begeEscuro: "#685B5B"
+        begeEscuro: "#685B5B",
+        dourado: "#cd9c51"
+      },
+      fontFamily: {
+        sans: ['var(--font-inter)'],
       },
     },
   },

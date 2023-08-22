@@ -1,0 +1,18 @@
+{
+  "id": "mig_cha55trs9bepk9e7q0ig",
+  "parentID": "mig_cha52bf5jv1ark83456g",
+  "checksum": "1:7c7403595221129d9a57886a49cea8d5f78e70b8f0f7142dc1b01fdf5e766816",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataCriacao",
+          "type": "datetime",
+          "notNull": true,
+          "defaultValue": "now"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

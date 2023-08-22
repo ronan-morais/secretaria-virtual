@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bol4ald364lqgm9ug",
+  "parentID": "mig_ch7boj1ibk6tjssgshh0",
+  "checksum": "1:4f42f7a8185ababd8f0432f61e08148f1e247d9792223a6c8f895956ce996c32",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataUpdate",
+          "type": "datetime"
+        },
+        "table": "amigos"
+      }
+    }
+  ]
+}

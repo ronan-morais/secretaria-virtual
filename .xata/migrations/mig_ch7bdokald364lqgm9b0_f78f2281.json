@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bdokald364lqgm9b0",
+  "parentID": "mig_ch7bdl9ibk6tjssgshe0",
+  "checksum": "1:f78f228176bebfcbcdf0ddac3913701a6739053a3dcccceb188150fcc6fa1421",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "nascimento",
+          "type": "datetime"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

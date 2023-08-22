@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha58s3s9bepk9e7q0og",
+  "parentID": "mig_cha58p3s9bepk9e7q0ng",
+  "checksum": "1:745e50772e463f141c788a5b81c1d75aaa3b3042023a61e62384af65a3d68df5",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "situacaoMental",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

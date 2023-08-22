@@ -1,0 +1,13 @@
+{
+  "id": "mig_ch7b894ald364lqgm970",
+  "parentID": "mig_ch7b86p3vni07384spk0",
+  "checksum": "1:3510631f43bbf958607cfce3d55e2f585cfe407b99cf88ae88de88388262ce3f",
+  "operations": [
+    {
+      "removeColumn": {
+        "column": "genero",
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

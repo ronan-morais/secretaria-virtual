@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bf61ibk6tjssgshg0",
+  "parentID": "mig_ch7bf3h3vni07384spr0",
+  "checksum": "1:8c6581596384fd66c44c0b698e4da5c9f02d78a9c57846ccb293be4fcfaf7df4",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "funcao",
+          "type": "string"
+        },
+        "table": "funcoes"
+      }
+    }
+  ]
+}

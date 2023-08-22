@@ -1,0 +1,18 @@
+{
+  "id": "mig_cha5613s9bepk9e7q0jg",
+  "parentID": "mig_cha55trs9bepk9e7q0ig",
+  "checksum": "1:7fa8bdd2197590d9be37d0fa807d834ce585b56fa9dcad294d42f7e813d7facd",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataUpdate",
+          "type": "datetime",
+          "notNull": true,
+          "defaultValue": "now"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

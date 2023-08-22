@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha5ano51p5s769555qg",
+  "parentID": "mig_cha5ahrs9bepk9e7q0tg",
+  "checksum": "1:d0dca8ac074b2813add0dda525981ca10365bcb378631a576eaeeabc6f9d8ac9",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "primeiroTrabalho",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

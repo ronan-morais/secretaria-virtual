@@ -1,0 +1,19 @@
+{
+  "id": "mig_ch7bfcsald364lqgm9g0",
+  "parentID": "mig_ch7bf61ibk6tjssgshg0",
+  "checksum": "1:49ed60912cd4a3fc47555928064853a4c9632488bb473c04ec9cb729b6b3e84b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "lista",
+          "type": "vector",
+          "vector": {
+            "dimension": 1536
+          }
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

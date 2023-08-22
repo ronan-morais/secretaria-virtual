@@ -1,0 +1,16 @@
+{
+  "id": "mig_ch7bd9hibk6tjssgshc0",
+  "parentID": "mig_ch7bd44ald364lqgm990",
+  "checksum": "1:3410e935d239d2f9f3de682fcafe6d1f93674b5dc13abd5c2f2a933f2418cb85",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "telefone",
+          "type": "string"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

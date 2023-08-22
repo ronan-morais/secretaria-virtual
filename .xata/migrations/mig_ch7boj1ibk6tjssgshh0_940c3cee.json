@@ -1,0 +1,14 @@
+{
+  "id": "mig_ch7boj1ibk6tjssgshh0",
+  "parentID": "mig_ch7boe4ald364lqgm9tg",
+  "checksum": "1:940c3cee1c980fff61fe82249f3f68851e8580a53a5a14657a39fa283253856e",
+  "operations": [
+    {
+      "renameColumn": {
+        "newName": "dataUpdate",
+        "oldName": "dataAlteracao",
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "mig_cha52bf5jv1ark83456g",
+  "parentID": "mig_cha526js9bepk9e7q0h0",
+  "checksum": "1:167a615214cc1060b4bcdbaf1b908b6c3ed9151dfdb0d841f19645652497400b",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataUpdate",
+          "type": "datetime",
+          "defaultValue": "now"
+        },
+        "table": "trabalhos"
+      }
+    }
+  ]
+}

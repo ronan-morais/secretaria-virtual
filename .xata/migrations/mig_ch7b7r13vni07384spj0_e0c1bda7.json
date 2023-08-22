@@ -1,0 +1,17 @@
+{
+  "id": "mig_ch7b7r13vni07384spj0",
+  "parentID": "mig_ch7b3r93vni07384spi0",
+  "checksum": "1:e0c1bda7a16be4fe6ad563c08920cca98440455e08e5f31361e1a5a61c801265",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "dataAlteracao",
+          "type": "datetime",
+          "defaultValue": "now"
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

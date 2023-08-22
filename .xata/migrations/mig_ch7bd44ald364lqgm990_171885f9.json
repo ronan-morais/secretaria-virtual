@@ -1,0 +1,17 @@
+{
+  "id": "mig_ch7bd44ald364lqgm990",
+  "parentID": "mig_ch7bd09ibk6tjssgshb0",
+  "checksum": "1:171885f9b5ceada0bec2e8f61290494b5f70a07c25c758970099fc0e91f3f917",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "cpf",
+          "type": "string",
+          "unique": true
+        },
+        "table": "dadosUsuarios"
+      }
+    }
+  ]
+}

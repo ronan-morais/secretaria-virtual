@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha591bs9bepk9e7q0pg",
+  "parentID": "mig_cha58s3s9bepk9e7q0og",
+  "checksum": "1:5abd03ff56987b8842769a2b332a4cb5387457bf6ce60cf24e0a5c1b81080204",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "compulsao",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "mig_cha59do51p5s769555o0",
+  "parentID": "mig_cha5993s9bepk9e7q0rg",
+  "checksum": "1:596f8e45ad06105ebcf524a4e0b7057eae3fc348137e5da2793dfaabeb20b548",
+  "operations": [
+    {
+      "addColumn": {
+        "column": {
+          "name": "familiaReligiao",
+          "type": "string"
+        },
+        "table": "anamneses"
+      }
+    }
+  ]
+}
